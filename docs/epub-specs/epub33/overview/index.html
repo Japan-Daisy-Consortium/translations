@@ -148,7 +148,7 @@
 				overflow: auto
 			}</style>
 		
-    <title>EPUB 3 Overview 日本語訳</title>
+    <title>EPUB 3 概要</title>
 
 		<style id="respec-mainstyle">
 			@keyframes pop{
@@ -992,18 +992,18 @@
 </head>
 <body class="h-entry informative">
 <div class="translation-attention">
-<p>この文書は「<a href="https://www.w3.org/TR/2021/NOTE-epub-overview-33-20210112/">EPUB 3 Overview</a>」の日本語訳である。最新の文書は <a href="https://www.w3.org/TR/2021/NOTE-epub-overview-33-20210112/">https://www.w3.org/TR/2021/NOTE-epub-overview-33-20210112/</a> である。原文もしくは完全な情報は、<a href="https://www.w3.org/TR/2021/NOTE-epub-overview-33-20210112/">EPUB 3 Overview</a> を参照されたい。</p>
+<p>この文書は「<a href="https://www.w3.org/TR/2021/NOTE-epub-overview-33-20210112/">EPUB 3 Overview</a>」の日本語訳である。最新の文書は <a href="https://www.w3.org/TR/epub-overview-33/">https://www.w3.org/TR/epub-overview-33/</a> である。原文もしくは完全な情報は、<a href="https://www.w3.org/TR/2021/NOTE-epub-overview-33-20210112/">EPUB 3 Overview</a> を参照されたい。</p>
 <p>この日本語訳は参考である。公式な文書ではなく、翻訳・解釈の正確性を保証していない。</p>
 <dl>
 <dt>公開日:</dt>
-<dd>2021年3月x日</dd>
+<dd>2021年4月9日</dd>
 <dt>翻訳者:</dt>
 <dd>日本DAISYコンソーシアム技術委員会</dd>
 </dl>
 </div>
 <div class="head">
 <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" /></a>
-<h1 id="title" class="title">EPUB 3 Overview</h1>
+<h1 id="title" class="title">EPUB 3 概要</h1>
 <h2>W3C Working Group Note <time class="dt-published" datetime="2021-01-12">2021年1月12日</time></h2>
 <dl>
 				<dt>この版：</dt>
@@ -1126,7 +1126,7 @@
 <h3 id="x1-1-package-document"><bdi class="secno">1.1 </bdi>パッケージ ドキュメント<a class="self-link" aria-label="§" href="#sec-package-file"></a></h3>
 <p>すべての EPUB 出版物は、<a href="https://www.w3.org/TR/epub-33/#dfn-package-document">パッケージ ドキュメント</a>によって表現される。パッケージ ドキュメントは、コンテンツの表示をレンダリングするために必要な全てのリソースを特定する。パッケージ ドキュメントは、直線的な読書のための読み上げ順と、メタデータとナビゲーション情報を関連付けもまた定義する。</p>
 <p>パッケージ ドキュメントは、一般的なウェブ サイトの大幅な改善を示している。例えばウェブ サイトは、そのコンテンツ内のリソースへの参照を埋め込むが、一方でリソースを識別する手段が単純で柔軟なので、それをレンダリングするために必要な全てのリソースを列挙するのは困難である。加えて、巨大な出版物のマークアップするときにページの連続性を定義するウェブ サイトのための標準的な方法はなく、まさにそれは EPUB の <a href="https://www.w3.org/TR/epub-33/#sec-spine-elem"><code>spine</code> 要素</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] が行うことである（すなわち、これは、ドキュメントの集合を通して明示的にナビゲーションを規定する外部宣言の手段を提供する）。最後に、パッケージ ドキュメントは、ページのコレクションに全体的に適用されるメタデータを表現する標準的な方法を定義する。</p>
-<p>パッケージ ドキュメントは、論理的に関連した<a href="https://www.w3.org/TR/epub-33/#dfn-publication-resource">出版物リソース</a>のグルーピングを許可し、<a href="https://www.w3.org/TR/epub-33/#sec-collection-elem"><code>collection</code> 要素</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] もまた包含する。この要素は、例えば、埋め込まれたプレビューコンテンツの定義やそれらを構成する XHTML コンテンツ ドキュメントから索引や辞書を組み立てる能力などの処理やレンダリングの機能、専門的なコンテンツの識別の開発を可能にするために存在する。</p>
+<p>パッケージ ドキュメントは、論理的に関連した<a href="https://www.w3.org/TR/epub-33/#dfn-publication-resource">出版物リソース</a>のグルーピングを許可し、<a href="https://www.w3.org/TR/epub-33/#sec-collection-elem"><code>collection</code> 要素</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] もまた格納する。この要素は、例えば、埋め込まれたプレビューコンテンツの定義やそれらを構成する XHTML コンテンツ ドキュメントから索引や辞書を組み立てる能力などの処理やレンダリングの機能、専門的なコンテンツの識別の開発を可能にするために存在する。</p>
 <p>パッケージ ドキュメントは、[<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の専用の<a href="https://www.w3.org/TR/epub-33/#sec-nav-def-hidden">セクション</a>で規定されている。</p>
 </section>
 <section id="sec-nav">
@@ -1141,7 +1141,7 @@
 <section id="sec-nav-nav-doc">
 <h4 id="x1-2-2-navigation-document"><bdi class="secno">1.2.2 </bdi>ナビゲーション ドキュメント<a class="self-link" aria-label="§" href="#sec-nav-nav-doc"></a></h4>
 <p>それぞれの EPUB 出版物は、人間と機械が可読可能なナビゲーション情報を定義する [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>] の <code>nav</code> 要素を使用した <a href="https://www.w3.org/TR/epub-33/#dfn-epub-navigation-document">EPUB ナビゲーション ドキュメント</a>と呼ばれる特殊な XHTML コンテンツ ドキュメントを含んでいる。</p>
-<p>ナビゲーション ドキュメントは、基本的なアクセシビリティ及びナビゲーションのサポートだけでなく、全てのユーザーのためのナビゲーションを強化する機能を含む。これらの中で特に重要なのは、（XHTML ドキュメントであるナビゲーション ドキュメントは、ルビ注釈がネイティブにサポートされたなど）国際化のサポート及び、（MathML と SVG は、ナビゲーションリンク内に包含できる）埋め込まれた文法のサポートである。</p>
+<p>ナビゲーション ドキュメントは、基本的なアクセシビリティ及びナビゲーションのサポートだけでなく、全てのユーザーのためのナビゲーションを強化する機能を含む。これらの中で特に重要なのは、（XHTML ドキュメントであるナビゲーション ドキュメントは、ルビ注釈がネイティブにサポートされたなど）国際化のサポート及び、（MathML と SVG は、ナビゲーションリンク内に格納できる）埋め込まれた文法のサポートである。</p>
 <p>ナビゲーション ドキュメントもまた同様に、アクセシブルなリーディング システムのために情報へアクセスすることに影響を与えることなく、CSS と <a href="https://www.w3.org/TR/epub-33/#sec-nav-def-hidden"><code>hidden</code> 属性</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を使用してナビゲーションの表示を調整する柔軟な手段を提供する。</p>
 <p>ナビゲーション ドキュメントの構造とセマンティクスは、[<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の関連<a href="https://www.w3.org/TR/epub-33/#sec-nav-def-hidden">セクション</a>で規定されている。</p>
 <p>ナビゲーション ドキュメントの構造とセマンティクスは、[<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の専用の<a href="https://www.w3.org/TR/epub-33/#sec-nav">セクション</a>で規定されている。</p>
@@ -1149,9 +1149,9 @@
 </section>
 <section id="sec-metadata">
 <h3 id="x1-3-metadata"><bdi class="secno">1.3 </bdi>メタデータ<a class="self-link" aria-label="§" href="#sec-metadata"></a></h3>
-<p>EPUB 出版物は、メタデータを追加するためにオプションの豊富な配列を提供する。パッケージ ドキュメントは、タイトル、著者、識別子や容易にアクセスできる EPUB 出版物についての他の情報といった、EPUB 出版物についての一般的な情報ための専用の <a href="https://www.w3.org/TR/epub-33/#sec-metadata-elem"><code>metadata</code> セクション</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を包含する。また、<a href="https://www.w3.org/TR/epub-33/#sec-link-elem"><code>link</code> 要素</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を使用して完全な書誌レコードを添付する手段も提供する。</p>
+<p>EPUB 出版物は、メタデータを追加するためにオプションの豊富な配列を提供する。パッケージ ドキュメントは、タイトル、著者、識別子や容易にアクセスできる EPUB 出版物についての他の情報といった、EPUB 出版物についての一般的な情報ための専用の <a href="https://www.w3.org/TR/epub-33/#sec-metadata-elem"><code>metadata</code> セクション</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を格納する。また、<a href="https://www.w3.org/TR/epub-33/#sec-link-elem"><code>link</code> 要素</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を使用して完全な書誌レコードを添付する手段も提供する。</p>
 <p>パッケージ ドキュメントはまた、<a href="https://www.w3.org/TR/epub-33/#dfn-unique-identifier">一意識別子</a>が <a href="https://www.w3.org/TR/epub-33/#attrdef-package-unique-identifier"><code>unique-identifier</code> 属性</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を使用して、EPUB 出版物を確立することを許可している。</p>
-<p>XHTML コンテンツ ドキュメントはまた、処理とアクセシビリティの目的の両方に、より意味を持たせて便利である、豊富なメタデータで注釈をマークアップする手段を包含する。RDFa [<cite><a class="bibref" data-link-type="biblio" href="#bib-rdfa-core" title="RDFa Core 1.1 - Third Edition">RDFA-CORE</a></cite>] と Microdata [<cite><a class="bibref" data-link-type="biblio" href="#bib-microdata" title="HTML Microdata">Microdata</a></cite>] の両属性は、その目的のために XHTML コンテンツ ドキュメントで使用できる。</p>
+<p>XHTML コンテンツ ドキュメントはまた、処理とアクセシビリティの目的の両方に、より意味を持たせて便利である、豊富なメタデータで注釈をマークアップする手段を格納する。RDFa [<cite><a class="bibref" data-link-type="biblio" href="#bib-rdfa-core" title="RDFa Core 1.1 - Third Edition">RDFA-CORE</a></cite>] と Microdata [<cite><a class="bibref" data-link-type="biblio" href="#bib-microdata" title="HTML Microdata">Microdata</a></cite>] の両属性は、その目的のために XHTML コンテンツ ドキュメントで使用できる。</p>
 </section>
 <section id="sec-content-docs">
 <h3 id="x1-4-content-documents"><bdi class="secno">1.4 </bdi>コンテンツ ドキュメント<a class="self-link" aria-label="§" href="#sec-content-docs"></a></h3>
@@ -1161,20 +1161,20 @@
 <section id="sec-fxl">
 <h3 id="x1-5-fixed-layouts"><bdi class="secno">1.5 </bdi>固定レイアウト<a class="self-link" aria-label="§" href="#sec-fxl"></a></h3>
 <p>EPUB の歴史は、リフローコンテンツにできるようにすることに注力しているが、すべての出版物を安易にリフローにして役立つというわけではない。児童書、マンガ、マンガ、雑誌、及び他の多くのコンテンツの形式を意味のある形で表現するためには、ページを正確にレイアウトする能力が求められる。</p>
-<p>EPUB 3 は、SVG に固定レイアウトのための既存の機能に加えて、<a href="https://www.w3.org/TR/epub-33/#sec-fixed-layouts">固定レイアウトの XHTML コンテンツ ドキュメント</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の作成を可能にするメタデータを包含する。このメタデータは、<a href="https://www.w3.org/TR/epub-33/#sec-fxl-content-dimensions">ページ寸法</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] のコントロールを可能にし、要素を絶対的に配置することができるキャンバスを作成する。</p>
+<p>EPUB 3 は、SVG に固定レイアウトのための既存の機能に加えて、<a href="https://www.w3.org/TR/epub-33/#sec-fixed-layouts">固定レイアウトの XHTML コンテンツ ドキュメント</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の作成を可能にするメタデータを格納する。このメタデータは、<a href="https://www.w3.org/TR/epub-33/#sec-fxl-content-dimensions">ページ寸法</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] のコントロールを可能にし、要素を絶対的に配置することができるキャンバスを作成する。</p>
 <p>メタデータは、コンテンツが固定かリフローかのフラグだけではなく、EPUB 出版物の表現を制御する広い範囲を提供し、<a href="https://www.w3.org/TR/epub-33/#spread">合成された見開きの作成</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>]するとき、望む<a href="https://www.w3.org/TR/epub-33/#orientation">ページの回転</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の規定や、それらの見開き内に<a href="https://www.w3.org/TR/epub-33/#page-spread">ページをどのように配置するかの方法</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>]もまた製作者に許可する。</p>
 </section>
 <section id="sec-rendering">
 <h3 id="x1-6-rendering-and-css"><bdi class="secno">1.6 </bdi>レンダリングと CSS<a class="self-link" aria-label="§" href="#sec-rendering"></a></h3>
 <p>EPUB のキーコンセプトは、ユーザーがコンテンツの特定の表現に適応するよりもむしろ、ユーザーにそのコンテンツの表現を適応するということである。HTML はもともと構造化されたコンテンツの動的なレンダリングをサポートするように設計されているが、徐々に、ウェブ ブラウザでサポートされる HTML は、ウェブ アプリケーションの需要に焦点が当てられ、現在、最も人気のあるウェブ サイトは、固定フォーマットのレイアウトである。</p>
-<p>EPUB 出版物は、また一方で、視覚障害のためにアクセシビリティを最大限に高めるよう設計され、リーディング システムは、一般的に、表示領域のサイズ、ユーザーの選んだフォントサイズ、他の環境要因に適合し、その場でテキスト行のレイアウトやページ付けを実行する。この機能は、EPUB で保証されておらず、画像、ベクターグラフィック、動画や他の非リフローなコンテンツは、包含されてもよく、いくつかのリーディング システムは、その場もしくはまったく、ページ付けをしないかもしれない。それでもなお、動的なアダプティブ レイアウトとアクセシビリティのサポートは、EPUB 規格の進化の過程において第一の設計要点である。</p>
+<p>EPUB 出版物は、また一方で、視覚障害のためにアクセシビリティを最大限に高めるよう設計され、リーディング システムは、一般的に、表示領域のサイズ、ユーザーの選んだフォントサイズ、他の環境要因に適合し、その場でテキスト行のレイアウトやページ付けを実行する。この機能は、EPUB で保証されておらず、画像、ベクターグラフィック、動画や他の非リフローなコンテンツは格納されてもよく、いくつかのリーディング システムは、その場もしくはまったく、ページ付けをしないかもしれない。それでもなお、動的なアダプティブ レイアウトとアクセシビリティのサポートは、EPUB 規格の進化の過程において第一の設計要点である。</p>
 <p>EPUB コンテンツ ドキュメントは、製作者が望むレンダリングの性質を定義できるように、CSS スタイル シートを参照できる。EPUB 3 は、[<cite><a class="bibref" data-link-type="biblio" href="#bib-csssnapshot" title="CSS Snapshot">CSSSnapshot</a></cite>] で定義されているような CSS のサポートに従う。</p>
 <p>EPUB 3 はまた、横組と縦組のレイアウト及び左から右、右から左のドキュメントの両方を有効にする CSS スタイルをサポートする。詳細な情報は、多言語サポートの <a href="#sec-gls-css" class="sec-ref">§&#160;<bdi class="secno">2.3 </bdi>CSS</a> を参照されたい。</p>
 </section>
 <section id="sec-multimedia">
 <h3 id="x1-7-multimedia"><bdi class="secno">1.7 </bdi>マルチメディア<a class="self-link" aria-label="§" href="#sec-multimedia"></a></h3>
 <p>EPUB 3 は、それらの要素が提供する全ての機能と特長を継承した、[<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>] の <code>audio</code> と <code>video</code> 要素を介して <a href="https://www.w3.org/TR/epub-33/#dfn-xhtml-content-document">XHTML コンテンツ ドキュメント</a>に音声と動画の埋め込みをサポートする。音声や動画フォーマットの詳細情報は、<a href="https://www.w3.org/TR/epub-33/#sec-core-media-types">コア メディア タイプ</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] のセクションを参照されたい。</p>
-<p>EPUB 3 のもうひとつの主なマルチメディア機能は、<a href="https://www.w3.org/TR/epub-33/#dfn-media-overlay-document">メディア オーバーレイ ドキュメント</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の包含である。EPUB 出版物のために録音済みナレーションが利用できるとき、メディア オーバーレイは、コンテンツ ドキュメントのテキストに音声を同期させる機能を提供する（<a href="#sec-access-overlays" class="sec-ref">§&#160;<bdi class="secno">3.4 </bdi> 聴覚レンダリングとメディア オーバーレイ</a>も見よ）。</p>
+<p>EPUB 3 のもうひとつの主なマルチメディア機能は、<a href="https://www.w3.org/TR/epub-33/#dfn-media-overlay-document">メディア オーバーレイ ドキュメント</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の格納である。EPUB 出版物のために録音済みナレーションが利用できるとき、メディア オーバーレイは、コンテンツ ドキュメントのテキストに音声を同期させる機能を提供する（<a href="#sec-access-overlays" class="sec-ref">§&#160;<bdi class="secno">3.4 </bdi> 聴覚レンダリングとメディア オーバーレイ</a>も見よ）。</p>
 </section>
 <section id="sec-fonts">
 <h3 id="x1-8-fonts"><bdi class="secno">1.8 </bdi>フォント<a class="self-link" aria-label="§" href="#sec-fonts"></a></h3>
@@ -1194,7 +1194,7 @@
 <dl class="labels">
 <dt>発音辞書</dt>
 <dd>
-<p><abbr title="World Wide Web Consortium">W3C</abbr> PLS フォーマット [<cite><a class="bibref" data-link-type="biblio" href="#bib-pronunciation-lexicon" title="Pronunciation Lexicon Specification (PLS) Version 1.0">PRONUNCIATION-LEXICON</a></cite>] を使用する一般的な発音語彙を包含することは、製作者らに、全体の EPUB 出版物に適用される発音ルールを提供できるようにする。詳細な情報は、<a href="https://www.w3.org/TR/epub-33/#sec-pls">発音辞書</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を参照されたい。</p>
+<p><abbr title="World Wide Web Consortium">W3C</abbr> PLS フォーマット [<cite><a class="bibref" data-link-type="biblio" href="#bib-pronunciation-lexicon" title="Pronunciation Lexicon Specification (PLS) Version 1.0">PRONUNCIATION-LEXICON</a></cite>] を使用する一般的な発音語彙を格納することは、製作者らに、全体の EPUB 出版物に適用される発音ルールを提供できるようにする。詳細な情報は、<a href="https://www.w3.org/TR/epub-33/#sec-pls">発音辞書</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を参照されたい。</p>
 </dd>
 <dt>インライン SSML 音素</dt>
 <dd>
@@ -1213,22 +1213,22 @@
 <h2 id="x2-global-language-support"><bdi class="secno">2. </bdi>多言語サポート<a class="self-link" aria-label="§" href="#sec-gls"></a></h2>
 <section id="sec-gls-metadata">
 <h3 id="x2-1-metadata"><bdi class="secno">2.1 </bdi>メタデータ<a class="self-link" aria-label="§" href="#sec-gls-metadata"></a></h3>
-<p>EPUB 3 は、EPUB 出版物の世界的な頒布を強化するために、パッケージ メタデータ セクションの全てのテキストのメタデータ項目の代替表現をサポートする。<a href="https://www.w3.org/TR/epub-33/#alternate-script"><code>alternate-script</code> プロパティ</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] は、言語を指定しているメタデータの代替文字のレンダリングの包含と識別に <code>xml:lang</code> 属性で紐付けることができる。</p>
-<p>このプロパティを使用すると、日本語の EPUB 出版物は、例えば、著者名のローマ字の表現および/またはひとつ以上のロマンス語によるタイトルの表現を含むことができる。</p>
+<p>EPUB 3 は、EPUB 出版物の世界的な頒布を強化するために、パッケージ メタデータ セクションの全てのテキストのメタデータ項目の代替表現をサポートする。<a href="https://www.w3.org/TR/epub-33/#alternate-script"><code>alternate-script</code> プロパティ</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] は、言語を指定しているメタデータの代替文字のレンダリングの格納と識別に <code>xml:lang</code> 属性で紐付けることができる。</p>
+<p>このプロパティを使用すると、日本語の EPUB 出版物は、例えば、著者名のローマ字の表現および/またはひとつ以上のロマンス語によるタイトルの表現を格納できる。</p>
 <p><code>page-progression-direction</code> 属性もまた、コンテンツフローの方向が、全体的なレンダリングを容易にするために全てのコンテンツ ドキュメントに規定することができる（<a href="https://www.w3.org/TR/epub-33/#attrdef-spine-page-progression-direction">page-progression-direction</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] を参照されたい）。</p>
 </section>
 <section id="sec-gls-content-docs">
 <h3 id="x2-2-content-documents"><bdi class="secno">2.2 </bdi>コンテンツ ドキュメント<a class="self-link" aria-label="§" href="#sec-gls-content-docs"></a></h3>
 <p>XHTML コンテンツ ドキュメントは、双方向コンテンツのレンダリングのサポートを向上させる HTML の方向性の機能を利用する。<code>bdi</code> 要素は、双方向テキストのインスタンスを周囲のコンテンツから隔離させることができ、<code>bdo</code> 要素は、子のコンテンツの方向性を上書き、<code>dir</code> 属性は、任意の要素の方向性を明示的に設定できる。</p>
 <p>XHTML コンテンツ ドキュメントもまた、発音のサポート（それらは同様に、ナビゲーション ドキュメントのリンクをサポートする）のルビ注釈をサポートする。</p>
-<p>SVG コンテンツ ドキュメントは、双方向テキストのレンタリングをサポートするが、ルビのサポートは包含されていない。</p>
+<p>SVG コンテンツ ドキュメントは、双方向テキストのレンタリングをサポートするが、ルビのサポートは格納されていない。</p>
 </section>
 <section id="sec-gls-css">
 <h3 id="x2-3-css"><bdi class="secno">2.3 </bdi>CSS<a class="self-link" aria-label="§" href="#sec-gls-css"></a></h3>
 <p>CSS3 モジュールの EPUB 3 のサポートは、多くの異なる言語や文化のタイポグラフィを可能にする。いくつかの具体的な強化は以下の通りである。</p>
 <ul>
 <li><p>リーディング システムに、利用者が方向を切り替えることができる機能を提供する縦書きのサポート、</p></li>
-<li><p>例えば傍点の包含のような強調の優れた制御、</p></li>
+<li><p>例えば傍点の格納のような強調の優れた制御、</p></li>
 <li><p>新しい単語を区切るためにスペースを使用できない言語の文字レベルに生じる可能性のある改行の優れた制御、と</p></li>
 <li><p>改行を容易にする優れたハイフネーションの制御。</p></li>
 </ul>
@@ -1251,8 +1251,8 @@
 </section>
 <section id="sec-accessibility">
 <h2 id="x3-accessibility"><bdi class="secno">3. </bdi>アクセシビリティ<a class="self-link" aria-label="§" href="#sec-accessibility"></a></h2>
-<p>EPUB の主な目標は、コンテンツのアクセシビリティを促進することであり、EPUB 3 の多様な機能は、この要求をサポートする。このセクションは、該当する EPUB 出版物がアクセシブルであることを確保するためのいくつかの確立されたベストプラクティスを記述し、これらの機能を再検討する。</p>
-<p>EPUB 3 は、[<cite><a class="bibref" data-link-type="biblio" href="#bib-wcag20" title="Web Content Accessibility Guidelines (WCAG) 2.0">WCAG20</a></cite>] のウェブ コンテンツをアクセシブルにするための大規模な作業を活用するアクセシビリティ仕様 [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-a11y-10" title="EPUB Accessibility 1.0">EPUB-A11Y-10</a></cite>] もまた包含する。仕様は、幅広いユーザーがアクセスできる EPUB 出版物の製造のための要件を定義する。要件を満たすためのベストプラクティスを説明する達成方法のドキュメントが付属している。</p>
+<p>EPUB の主な目標は、コンテンツのアクセシビリティを促進することであり、EPUB 3 の多様な機能は、この要求事項をサポートする。このセクションは、該当する EPUB 出版物がアクセシブルであることを確保するためのいくつかの確立されたベストプラクティスを記述し、これらの機能を再検討する。</p>
+<p>EPUB 3 は、[<cite><a class="bibref" data-link-type="biblio" href="#bib-wcag20" title="Web Content Accessibility Guidelines (WCAG) 2.0">WCAG20</a></cite>] のウェブ コンテンツをアクセシブルにするための大規模な作業を活用するアクセシビリティ仕様 [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-a11y-10" title="EPUB Accessibility 1.0">EPUB-A11Y-10</a></cite>] もまた格納する。仕様は、幅広いユーザーがアクセスできる EPUB 出版物の製造のための要求事項を定義する。要求事項を満たすためのベストプラクティスを説明する達成方法のドキュメントが付属している。</p>
 <p>アクセシビリティの留意を重視することは本当に重要で、アクセシブルなコンテンツは、より価値の高いコンテンツでもあり、アクセシブルな EPUB 出版物は、手動または自動化されたワークフローを介して、全体または一部のより多くのデバイス対応と、再利用が容易になる。EPUB ワーキング グループは、製作者らがアクセシブルなコンテンツを生成し、担保することを強く推奨する。</p>
 <section id="sec-access-nav">
 <h3 id="x3-1-navigation"><bdi class="secno">3.1 </bdi>ナビゲーション<a class="self-link" aria-label="§" href="#sec-access-nav"></a></h3>
@@ -1262,8 +1262,8 @@
 </section>
 <section id="sec-access-semantic-markup">
 <h3 id="x3-2-semantic-markup"><bdi class="secno">3.2 </bdi>セマンティック マークアップ<a class="self-link" aria-label="§" href="#sec-access-semantic-markup"></a></h3>
-<p>[<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>] は、（例えば、<code>section</code>、<code>nav</code> 及び <code>aside</code> など）マークアップをより意味論的に意義あるものにする要素をサポートしている。製作者は、EPUB XHTML コンテンツ ドキュメントを作成するとき、十分に構造化されたウェブ コンテンツを作成するためのベストプラクティスと併せて、これらの要素を使用することが推奨される。この追加は、コンテンツをより良く分類し、文書構造の表現のために、そしてこれらの論理的なナビゲーションを容易にするための定義をすることができる。XHTML コンテンツ ドキュメントはまた、ARIA の ロール（role）とステート（state）、プロパティ（property）、コンテンツ相互作用する支援技術の能力を高めるイベントの包含をネイティブにサポートする。</p>
-<p>EPUB 3 は、さらに、<abbr title="World Wide Web Consortium">W3C</abbr> ロール属性 [<cite><a class="bibref" data-link-type="biblio" href="#bib-role-attribute" title="Role Attribute 1.0">Role-Attribute</a></cite>] と機能的に同等であることを意味する <code>epub:type</code> 属性を包含する。この属性は、XHTML コンテンツ ドキュメント内の任意の要素に統制された語彙と用語を使用して、作品内にその目的と意味に関する追加の情報を包含することができる。詳細な情報は、<a href="https://www.w3.org/TR/epub-33/#app-structural-semantics">Expressing Structural Semantics</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] のセクションを参照されたい。</p>
+<p>[<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>] は、（例えば、<code>section</code>、<code>nav</code> 及び <code>aside</code> など）マークアップをより意味論的に意義あるものにする要素をサポートしている。製作者は、EPUB XHTML コンテンツ ドキュメントを作成するとき、十分に構造化されたウェブ コンテンツを作成するためのベストプラクティスと併せて、これらの要素を使用することが推奨される。この追加は、コンテンツをより良く分類し、文書構造の表現のために、そしてこれらの論理的なナビゲーションを容易にするための定義をすることができる。XHTML コンテンツ ドキュメントはまた、ARIA の ロール（role）とステート（state）、プロパティ（property）、コンテンツ相互作用する支援技術の能力を高めるイベントの格納をネイティブにサポートする。</p>
+<p>EPUB 3 は、さらに、<abbr title="World Wide Web Consortium">W3C</abbr> ロール属性 [<cite><a class="bibref" data-link-type="biblio" href="#bib-role-attribute" title="Role Attribute 1.0">Role-Attribute</a></cite>] と機能的に同等であることを意味する <code>epub:type</code> 属性を格納する。この属性は、XHTML コンテンツ ドキュメント内の任意の要素に統制された語彙と用語を使用して、作品内にその目的と意味に関する追加の情報を格納することができる。詳細な情報は、<a href="https://www.w3.org/TR/epub-33/#app-structural-semantics">Expressing Structural Semantics</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] のセクションを参照されたい。</p>
 </section>
 <section id="sec-access-layout">
 <h3 id="x3-3-dynamic-layouts"><bdi class="secno">3.3 </bdi>動的レイアウト<a class="self-link" aria-label="§" href="#sec-access-layout"></a></h3>
@@ -1273,13 +1273,13 @@
 </section>
 <section id="sec-access-overlays">
 <h3 id="x3-4-aural-renditions-and-media-overlays"><bdi class="secno">3.4 </bdi>聴覚レンダリングとメディア オーバーレイ<a class="self-link" aria-label="§" href="#sec-access-overlays"></a></h3>
-<p>コンテンツの聴覚レンダリングは、アクセシビリティのために重要であり、他の多くのユーザーための機能としても価値がある。聴覚レンダリングを促進するためのベースラインは、動的なレイアウトのために設計されたセマンティックな HTML の利用である。EPUB XHTML ドキュメントに含んでいるネイティブの機能を使用する方法の詳細な情報は、<a href="#sec-tts" class="sec-ref">§&#160;<bdi class="secno">1.10</bdi> テキスト読み上げ</a>を参照されたい。</p>
+<p>コンテンツの聴覚レンダリングは、アクセシビリティのために重要であり、他の多くのユーザーための機能としても価値がある。聴覚レンダリングを促進するためのベースラインは、動的なレイアウトのために設計されたセマンティックな HTML の利用である。EPUB XHTML ドキュメントに格納しているネイティブの機能を使用する方法の詳細な情報は、<a href="#sec-tts" class="sec-ref">§&#160;<bdi class="secno">1.10</bdi> テキスト読み上げ</a>を参照されたい。</p>
 <p>メディア オーバーレイは、EPUB 出版物のテキストと音声コンテンツを同期する機能を提供する。オーバーレイは、多くの状況で有益であり、例えば、読むことを学習するためのツールとして、テキストと音声の同期の実用性はアクセシビリティの範囲を超える。</p>
 </section>
 <section id="sec-access-fallbacks">
 <h3 id="x3-5-fallbacks"><bdi class="secno">3.5 </bdi>フォールバック<a class="self-link" aria-label="§" href="#sec-access-fallbacks"></a></h3>
 <p>全てのフォーマットは、ネイティブのフォーマットでアクセス可能ではなく、全てのユーザーが提供されるデフォルトのフォーマットで読みことを好むわけではない。EPUB は、これらの場合に利用できる代替え表現のために、フォールバックを提供するための様々な手段を定義する。</p>
-<p>出版物とコンテンツレベルのフォールバックは、<a href="https://www.w3.org/TR/epub-33/#sec-foreign-restrictions">管理外リソース</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] のセクションで定義されている。これらのフォールバック メカニズムは、EPUB 出版物に管理外リソースを包含することを可能にし、様々な機能（例えば、複数の動画フォーマットを包含したり、EPUB 2 リーディング システムのために SVG コンテンツ ドキュメントに XHTML フォールバックの包含を許可する）を備えたリーディング システム全体で EPUB 3 の互換性の確保をする。</p>
+<p>出版物とコンテンツレベルのフォールバックは、<a href="https://www.w3.org/TR/epub-33/#sec-foreign-restrictions">管理外リソース</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] のセクションで定義されている。これらのフォールバック メカニズムは、EPUB 出版物に管理外リソースを格納することを可能にし、様々な機能（例えば、複数の動画フォーマットを格納したり、EPUB 2 リーディング システムのために SVG コンテンツ ドキュメントに XHTML フォールバックの格納を許可する）を備えたリーディング システム全体で EPUB 3 の互換性の確保をする。</p>
 </section>
 <section id="sec-access-scripting">
 <h3 id="x3-6-scripting"><bdi class="secno">3.6 </bdi>スクリプト<a class="self-link" aria-label="§" href="#sec-access-scripting"></a></h3>
@@ -1320,7 +1320,7 @@
 					</div>
 					<p class="">このセクションのテキストは、EPUB 3.3 の進化に合わせて更新されなければならず、現時点ではどちらかというとプレースホルダーである。現在、EPUB 3.3 の最終的な特性ではなく、作業の願望を反映している。</p>
 				</div>
-				<p>EPUB 3.3 [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の作業は2020年から21年に行われ、<abbr title="World Wide Web Consortium">W3C</abbr> 勧告として公開された EPUB 3 シリーズの最初のバージョンである。EPUB 3.3 は、EPUB 3.2 に対する重要な技術的変更を包含せず、EPUB 3.2 との強い後方互換性がある。これは、任意の妥当な EPUB 3.2 出版物が、妥当な EPUB 3.3 出版物であることも意味する。一方、<a href="https://www.w3.org//publishing/groups/epub-wg/"><abbr title="World Wide Web Consortium">W3C</abbr> EPUB 3 ワーキング グループ</a>によって開発された徹底的なテスト体制を介して、EPUB 3 出版物だけでなくリーディング システムの相互運用性も大幅に向上する。最後に、大幅な編集による改訂の結果として、ドキュメントが読みやすくなった。</p>
+				<p>EPUB 3.3 [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の作業は2020年から2021年に行われ、<abbr title="World Wide Web Consortium">W3C</abbr> 勧告として公開された EPUB 3 シリーズの最初のバージョンである。EPUB 3.3 は、EPUB 3.2 に対する重要な技術的変更を格納せず、EPUB 3.2 との強い後方互換性がある。これは、任意の妥当な EPUB 3.2 出版物が、妥当な EPUB 3.3 出版物であることも意味する。一方、<a href="https://www.w3.org//publishing/groups/epub-wg/"><abbr title="World Wide Web Consortium">W3C</abbr> EPUB 3 ワーキング グループ</a>によって開発された徹底的なテスト体制を介して、EPUB 3 出版物だけでなくリーディング システムの相互運用性も大幅に向上する。最後に、大幅な編集による改訂の結果として、ドキュメントが読みやすくなった。</p>
 				<p>[<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">EPUB-33</a></cite>] の別<a href="https://www.w3.org/TR/epub-33/#changes-latest">セクション</a>は、変更点のより詳細な概要を提供する。</p>
 			</section>
 </section>
