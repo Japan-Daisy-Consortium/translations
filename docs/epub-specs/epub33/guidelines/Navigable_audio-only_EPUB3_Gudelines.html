@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+<head>
+<title>ナビゲート可能な音声のみのEPUB 3出版物ガイドライン version 1.0 </title>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/translation_memo.css" type="text/css">
+<style>
+        table{
+            border-collapse: 
+            collapse;border-left-width:0; 
+            border-right-width:0;
+            border-style:solid;
+            border-width:2px;
+        }
+
+tr, th,td{
+    border-width: 1px;
+    border-style: solid; 
+    padding: 0.618em 1em;
+}        
+</style>
+</head>
+ 
+<body dir="ltr"> 
+
+<div class="translation-attention">
+    <p>この文書は<a href="http://www.daisy.org/">DAISY Consortium</a>
+ の &quot;<a href="http://www.daisy.org/ties/navigable-audio-only-epub3-guidelines" hreflang="en">Guidelines for Navigable Audio Only EPUB 3 Publications version 1.0</a>&quot;の日本語訳である。本文書の原文もしくは完全な情報は、&quot;<a href="http://www.daisy.org/ties/navigable-audio-only-epub3-guidelines" hreflang="en">Guidelines for Navigable Audio Only EPUB 3 Publications</a>&quot;を参照されたい。</p>
+    <p>この日本語訳は参考である。公式な文書ではなく、翻訳・解釈の正確性を保証していない。</p>
+    <dl>
+    <dt>公開日:</dt>
+    <dd>2021年　月 日</dd>
+    <dt>翻訳者:</dt>
+    <dd>日本DAISYコンソーシアム技術委員会</dd>
+    </dl>
+</div>
+
+<div class="field-item even">
+<h1>ナビゲート可能な音声のみのEPUB 3出版物ガイドライン</h1>
+<p>version 1.0</p>
+<p>公開日: 2015年4月24日</p>
+ <p>George Kerscher、Romain Deltour 及び <a href="http://www.daisy.org/ties/management-and-participation">TIES production subgroupのメンバー</a>からのコメントを統合し、Avneesh Singhが編集した。</p>
+
+ <p></p>
+<h2>はじめに</h2>
+<p>この文書は、ナビゲート可能な音声のみのEPUB 3出版物製作のためのガイドラインを提供するものである。この文書の目的は、主に音声で構成され、セクション、ページ、その他スキップ可能な構造を備えたナビゲート可能なEPUB 3出版物の製作とレンダリングのための、オーディオブック製作センター、製作ツールの開発者及びリーディングシステム開発者を対象とした手引きを提供することである。</p>
+<h2>背景</h2>
+このガイドラインは、以下で入手可能なEPUB 3.01の仕様に基づいている。<br><a href="http://www.idpf.org/epub/301/spec/epub-overview.html">http://www.idpf.org/epub/301/spec/epub-overview.html</a>
+<br>及び<br><a href="http://www.idpf.org/epub/301/spec/epub-mediaoverlays.html">http://www.idpf.org/epub/301/spec/epub-mediaoverlays.html</a>
+<br><p></p>
+<h2>想定される利用</h2>
+ <ol><li>DAISYコンソーシアムの中で、何十万タイトルの出版物がのDAISY 2.02またはDAISY 3規格に準拠して、ナビゲーションを付されて音声のみで製作された。時間の経過とともに、これらは本仕様に変換されることが期待される。</li>
+ <li>これらのガイドラインとEPUB 3.01に準拠したオーディオブックを商用のオーディオブック業界が将来、製作するときにこのガイドラインのセットを有用と見なすかもしれない。配布のためのシングルファイルとEPUB リーディングシステムにおける幅広いサポートは、商用のオーディオブック業界にとってこれらのガイドラインを非常に魅力に感じさせるかもしれない。</li>
+</ol>
+<p></p>
+<h2>DAISY仕様に対応する制御の流れ</h2>
+<p>機能的には、EPUB 3.0.1 メディア オーバーレイの仕様は、DAISY仕様にやや似ている。両方の仕様では、テキストと音声の同期がSMILファイルによって達成される。SMILファイルはEPUB 3では、メディア オーバーレイ ドキュメントと呼ばれている。<br>しかし、この両者には、多少の違いもある。EPUB 3 メディア オーバーレイ における制御のフローがDAISYにおけるそれと若干異なるのである。DAISYの仕様と異なり、EPUB 3ではナビゲーション ドキュメントがSMILファイルを直接参照しない。代わりに、ナビゲーション ドキュメント はコンテンツ ドキュメントを参照する。 コンテンツ ドキュメントは対応するSMILファイルに関連付けられている。そのため、EPUB 3での同期されたメディアの制御はコンテンツ ドキュメントを経由する。</p>
+<h2>ガイドライン</h2>
+ <h3>1. ファイルセットの構造</h3>
+ <ol><li>ナビゲート可能な音声のみの出版物は循環参照を防ぐために、ナビゲーション ドキュメントとコンテンツ ドキュメントを分割して格納しなければならない（MUST）。</li>
+ <li>より小さなサイズの複数のSMILファイルによる構成を確保するため、複数のコンテンツ ドキュメントが推奨される（RECOMMENDED）。SMILファイルのサイズが小さいことは、処理能力の低いリーディングシステムには不可欠なことである。</li>
+ <li>コンテンツ ドキュメントと対応するSMILファイルの推奨粒度は、各見出しごとに1つのコンテンツ ドキュメントである。</li>
+ </ol>
+<h3>2. ナビゲーション＆スキップ可能な構造</h3>
+ <h4>2.1. ページ</h4>
+ <ol><li>出版物がページを持っている場合、ナビゲーション ドキュメントは1つのページリストを持たなければならない（MUST）。そして、そのページリストはコンテンツ ドキュメント内の改ページマークアップを参照しなければならない（MUST）。
+EPUB:type=”page-list” はページリストを格納するnav要素で使用されなければならない（MUST）。</li>
+</ol>
+<h4>2.2. スキップ可能な注釈</h4>
+ <ol><li>出版物がfootnoteのようなスキップ可能な構造を持っている場合、ナビゲーション ドキュメント はコンテンツ ドキュメント内のスキップ可能な構造への参照のリストを格納したnav要素を持ってもよい（MAY）。EPUB:type=”footnotes”はfootnoteへの参照を持ったnav要素で使用されなければならない（MUST）。 一方、EPUB:type=”landmarks” はrearnotes、notes、helpなどに使用してもよい（MAY）。 footnoteのための多くて1つのnav要素とlandmarkのための多くて１つのnav要素がなくてはならない（MUST）。<br>重要な注意事項： rearnoteやnoteなどのようなスキップ可能な構造のコレクションのためのEPUB:typeの属性の値は、まだ明示的に定義されていない。将来的に EDUPUB Profileによってサポートされるだろう。<a href="http://www.idpf.org/epub/profiles/edu/EDUPUBContentModel/ContentModel.html">http://www.idpf.org/epub/profiles/edu/EDUPUBContentModel/ContentModel.html</a>
+ にあるEDUPUB profileを注視してほしい。</li>
+ <li>コンテンツ ドキュメント内のスキップ可能な構造は、スキップ可能な要素によって表現されなければならない（MUST）。それらの要素は、例えば、 &lt;aside id="s1" epub:type="sidebar"&gt;&lt;p&gt;sidebar-1&lt;/p&gt;&lt;/aside&gt;のように、スキップ可能な構造を表現するためのテキストを格納するべきである（SHOULD）。
+</li>
+ <li>スキップ可能な構造を表現するSMILの要素はコンテンツ ドキュメント 内のスキップ可能な要素を参照しなければならない（MUST）。一方で、スキップ可能な構造に続くSMILの要素は、コンテンツ ドキュメント内のスキップ可能な要素の下にあるプレースフォルダ（訳者注: プレスホルダ（place holder）の誤り？）を参照するべきである（SHOULD）。プレースフォルダ（訳者注: プレスホルダ（place holder）の誤り？）は、divまたはpのようなHTML 5の要素に配置されたテキストでもよい（MAY）。<br>例 &lt;p id=”text1”&gt;Main content continues&lt;/p&gt;</li>
+ </ol>
+<h3>3. メディア オーバーレイ の コンテンツ ドキュメントへの参照</h3>
+ <p>メディア オーバーレイはテキストと音声の同期のために設計されているが、音声のみのEPUB 3出版物では、テキストのイベントが音声と比較して少なく、コンテンツ ドキュメントは見出しとページのテキストを主に格納している。一部分のテキストと音声を同期させるための推奨される（RECOMMENDED）アプローチは次のとおりである。</p>
+ <ol><li>テキストとの関連付けされていないSMILのイベントは、SMILイベントの前にある見出しかページのようなテキストコンテンツに対応するコンテンツ ドキュメントの要素を参照するべきである（SHOULD）。このアプローチは、音声イベントが大量にあり、かつ高い正確さが期待できない娯楽用朗読図書により適している。</li>
+ <li>テキストとの関連付けがされていないSMILイベントは、各SMILドキュメントがユニークなテキストフラグメントを参照するように、コンテンツ ドキュメント内のダミーテキストを参照するべきである（SHOULD）。ブックマークのような機能が正確に機能するため、このアプローチは教科書により適している。</li>
+ </ol>
+<h3>4.メタデータ</h3>
+ <ol><li>EPUB 3.0.1仕様は、音声のみの出版物に固有のメタデータを持っていない。適切なメタデータがEPUB 3.xの仕様に組み込まれるまでは、メディア オーバーレイ のメタデータを使用しなければならない（MUST）。<br>重要な注意事項：ガイドラインワーキンググループは、ナビゲート可能な音声のみ出版物を識別するためのメタデータが配信システムにとって重要であると認識している。これは、将来の仕様で組み込まれるだろう。</li>
+ </ol>
+<h3>5. 視覚的レンダリング</h3>
+ <ol><li> コンテンツ ドキュメントの視覚的レンダリングは、主にリーデディングシステムによって制御される。<br>製作センターが意図的にリーディングシステムの視覚的レンダリングの振る舞いに制約を課すことを望む場合、製作側でコンテンツ ドキュメントを隠すことは任意である（OPTIONAL）</li>
+ </ol>
+<p></p>
+<h2>適合性宣言</h2>
+<p>この文書で利用されているキーワード&quot;MUST&quot;、&quot;MUST NOT&quot;、&quot;REQUIRED&quot;、 &quot;SHALL&quot;、 &quot;SHALL NOT&quot;、&quot;SHOULD&quot;、&quot;SHOULD NOT&quot;、 &quot;RECOMMENDED&quot;、 &quot;MAY&quot;及び&quot;OPTIONAL&quot;はRFC 2119で規定されている通りに解釈されることとする。<br><a href="https://www.ietf.org/rfc/rfc2119.txt">https://www.ietf.org/rfc/rfc2119.txt</a></p>
+<h2>サンプル</h2>
+<table>
+<tbody>
+<tr>
+<th>ファイル名 / ダウンロードURL</th>
+<th style="width:8em;">ファイルサイズ</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><a href="https://dl.daisy.org/samples/epub/The_Story_of_the_Three_Little_Pigs-dummy_text.epub">The Story of the Three Little Pigs-dummy text.epub</a></td>
+<td>4.2 MB</td>
+<td>コンテンツ ドキュメント内にダミーのテキストを格納したサンプル出版物</td>
+</tr>
+<tr >
+<td><a href="https://dl.daisy.org/samples/epub/The_Story_of_the_Three_Little_Pigs.epub">The Story of the Three Little Pigs.epub</a></td>
+<td>4.2 MB</td>
+<td>ダミーのテキストなしのサンプル出版物</td>
+</tr>
+<tr>
+<td><a href="https://dl.daisy.org/samples/epub/Climbing_the_Highest_Mountain.epub">Climbing The Highest Mountain.epub</a></td>
+<td>2 MB</td>
+<td>スキップ可能な構造を持つサンプル出版物</td>
+</tr>
+</tbody>
+</table>
+<p>最後の編集日：2014年7月22日</p>
+ </div>
+
+</body>
+ </html>
