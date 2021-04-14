@@ -1,0 +1,1629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ja" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja"> 
+<head>
+<title>DAISY 2.02 仕様（2001年2月28日付勧告 日本語訳）</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width; initial-scale=1,minimum-scale=1, user-scalable=yes" />
+<link rel="stylesheet" href="css/d202.css" type="text/css">
+<link rel="stylesheet" href="css/translation_memo.css" type="text/css">
+
+</head> 
+<body dir="ltr"> 
+<div class="translation-attention">
+    <p>この文書は<a href="http://www.daisy.org/">DAISY Consortium</a> の &quot;<a href="http://www.daisy.org/z3986/specifications/daisy_202.html"　hreflang="en">DAISY 2.02 Specification (Recommendation, February 28 2001)</a>&quot;の日本語訳である。本文書の原文もしくは完全な情報は、&quot;<a href="http://www.daisy.org/z3986/specifications/daisy_202.html" hreflang="en">DAISY 2.02 Specification (Recommendation, February 28 2001)</a>&quot;を参照されたい。</p>
+    <p>この日本語訳は参考である。公式な文書ではなく、翻訳・解釈の正確性を保証していない。</p>
+    <dl>
+    <dt>公開日:</dt>
+    <dd>2021年　月 日</dd>
+    <dt>翻訳者:</dt>
+    <dd>日本DAISYコンソーシアム技術委員会</dd>
+    </dl>
+</div>
+
+
+<h1>DAISY 2.02 仕様</h1> 
+<p>2001年2月28日付勧告</p> 
+<p class="cr">Copyright &#169; <a href="http://www.daisy.org">The DAISY Consortium</a> 
+1998, 1999, 2000, 2001. </p> 
+<h2 id="abstract">概要</h2> 
+<p>この文書は、DAISY デジタル録音図書（Digital Talking Book : DTB）フォーマットのバージョン2.02を定義する。DAISYフォーマットは、W3Cが定義したSGML（ISO 8879）アプリケーション<a href="http://www.w3.org/TR/xhtml1">XHTML 1.0</a>と<a href="http://www.w3.org/TR/REC-smil">SMIL 1.0</a> 
+に基づいている。このフレームワークを使用して、録音図書のフォーマットは、音声と同期された（マークアップされた）テキストから成るシーケンシャルかつ階層的な構造の中のナビゲーションを可能とするように表現される。</p> 
+<h2 id="docstatus">このドキュメントのステータス</h2> 
+<p>これはDAISYコンソーシアムの正式な勧告である。</p> 
+<h2 id="toc">目次</h2> 
+<ul class="linklist"> 
+<li><a href="#introduction">1.</a><a href="#introduction">はじめに</a> 
+<ul class="nested"> 
+<li><a href="#description">1.1説明</a></li> 
+<li><a href="#dtbclass">1.3 DTBのタイプ</a></li> 
+<li><a href="#relation">1.2 他の仕様との関係</a></li> 
+</ul> 
+</li> 
+<li><a href="#documents">2. </a><a href="#documents">この規格で使用されるドキュメントとファイル</a> 
+<ul class="nested"> 
+<li><a href="#ncc">2.1 Navigation Control Center (NCC) ドキュメント</a></li> 
+<li><a href="#textdoc">2.2 テキストコンテンツドキュメント（XHTML）</a></li> 
+<li><a href="#smil">2.3 SMILドキュメント</a></li> 
+<li><a href="#mastersmil">2.4 Master SMILドキュメント</a></li> 
+<li><a href="#audioformats">2.5 音声ファイルと形式</a></li> 
+</ul> 
+</li> 
+<li><a href="#distribution">3．</a><a href="#distribution">DTBの配布について</a> 
+<ul class="nested"> 
+<li><a href="#singlebook">3.1 単一ボリュームのDTB</a></li> 
+<li><a href="#multvolubook">3.2 複数のボリュームのDTB</a></li> 
+<li><a href="#multbookvolu">3.3複数のDTBのボリューム</a></li> 
+<li><a href="#cdrom">3.4 配布/ストレージメディアフォーマット</a></li> 
+</ul> 
+</li> 
+<li><a href="#changes">付録1. </a><a href="#changes">変更履歴</a></li> 
+<li><a href="#metatabs">付録2. </a><a href="#metatabs">DAISY 2.02ドキュメントのメタデータセット表</a></li> 
+<li><a href="#interoperability">付録3. </a><a href="#interoperability">相互運用性とDAISY証明</a></li> 
+</ul> 
+<p>Document maintained by: Markus Gylling</p> 
+<p>この文書は次のURLで利用することができる。: <a href="http://www.daisy.org/z3986/specifications/daisy_202.html">www.daisy.org/z3986/specifications/daisy_202.html</a></p> 
+<p>質問、意見、提案がある場合は、<a href="mailto:markus.gylling@tpb.se">Markus Gylling</a> 
+のmarkus.gylling@tpb.seまで連絡してほしい。</p> 
+<h2>謝辞</h2> 
+<p>George Kerscher, DAISY Consortium / Recording For the Blind and Dyslexic; Markus Gylling, DAISY Consortium / Swedish Library of Talking Books and Braille; James Pritchett, Recording For the Blind and Dyslexic; Heinz Zyset and Dorota Pograniczna and Matthias Ragaz, Swiss Library for the Blind and Visually Impaired; Lynn Leith and Barbara Freeze, Canadian National Institute for the Blind; Lars Sonnebo and Thomas Johansson, Swedish Library of Talking Books and Braille; Mark Hakkinen, isSound Corporation; Jan Lindholm and Diana Hiorth, Labyrinten Inc; Harvey Bingham, W3C Web Accessibility Initiative Invited Expert; David Pawson and Stephen King and Keith Gladstone, Royal National Institute for the Blind; Tatsu Nishizawa, Plextor Ltd; Dominic Labb&#233; and Gilles Pepin, VisuAide Inc.; Michael Moodie and Lloyd Rasmussen, National Library Service for the Blind and Physically Handicapped Library of Congress; Tom McCartney and Rej Tanikella, Recording For the Blind and Dyslexic; Jason White, Web Accessibility Initiative; Edmar Schut, Dutch Library for the Visually and Print-handicapped Students and Professionals; Susanne Seidelin and Christian Wallin, Danish National Library for the Blind; Thomas Kalish, Association of Talking Book Libraries of Germany; Brink Kuchenbrod and Chad Berkley, University of Montana; Daniel Dardailler and Philipp Hoschka, World Wide Web Consortium; Peter Toneby, Ume&#229; University.</p> 
+<h1 id="introduction">1. はじめに</h1> 
+<h2 id="description">1.1説明</h2> 
+<p>本仕様は、<a href="http://www.daisy.org/dtbook/spec/2/final/daisy-201.html">DAISY 2.01仕様</a> 
+を拡張し、改訂したものである。これらの改訂は、DAISY 3/NISO DTB 仕様に本仕様を一致させることと、DAISY2.01仕様で曖昧だった点を明確にすることを意図したものである。</p> 
+<p>本仕様のこのバージョンで行われた主な改訂点は以下のとおりである。</p> 
+<ul> 
+<li>NCCとテキストコンテンツドキュメントは、XHTML 1.0を使用する。</li> 
+<li>NCCとSMILドキュメントのメタデータが改訂され、明確にされた。</li> 
+<li>SMILドキュメントの構造要件が明確にされた。</li> 
+<li>Master SMILドキュメント構造が定義された。</li> 
+<li>対応するオーディオフォーマットが定義された。</li> 
+</ul> 
+<p>DAISY 2.02仕様では、DAISY 2.0仕様と技術的に後方互換性がある。</p> 
+<h3 id="nomenclature">1.1.1 用語</h3> 
+<p>定義: 本仕様におけるキーワード <i>must,、must not、required、shall、shall not、should、should not、recommended、may</i> 
+と <i>optional</i> 
+は <a href="http://www.ietf.org/rfc/rfc2119.txt">IETF RFC 2119</a>で記述されているとおりに解釈されるものとする。</p> 
+<h2 id="relation">1.2 他の仕様との関係</h2> 
+<p id="tn010203">本仕様は<a href="http://www.w3.org">World Wide Web Consortium</a>によって定義された<a href="http://www.w3.org/TR/xhtml1">XHTML 1.0</a>と<a href="http://www.w3.org/TR/REC-smil">SMIL 1.0</a> 
+の仕様を使用している。書誌情報とドキュメント内のメタデータは<a href="http://purl.org/DC/documents/rec-dces-19990702.htm">Dublin Core Metadata Initiative</a> 
+に基づいている。</p> 
+<h2 id="dtbclass">1.3 DTBのタイプ</h2> 
+<p><a href="http://www.daisy.org/dtbook/guidelines/draft/structguide.htm">DAISY structure guidelines</a> 
+に定義されているように、DAISY 2.02規格は次のタイプのDTBをサポートしている。</p> 
+<ol> 
+<li>全文音声・テキストはタイトル要素のみ:  これはナビゲーション可能な構造を持たないDTBである。DTBのタイトルだけがテキストとして利用できる。実際上のコンテンツは線形の音声のみが提供される。DTB内の特定の箇所への直接アクセスはできない。</li> 
+<li>全文音声・テキストはNCCのみ: これは、構造化されたDTBである。構造は、シーケンシャルなナビゲーションと階層的なナビテーションの両方を提供する二次元的なものである。多くの場合、DAISY DTBのこのタイプの構造は、ソースである印刷物の目次に似ている。</li> 
+<li>全文音声・テキストはNCCと一部の本文テキスト:  これは、上で述べたような構造を持つDTBであり、一部の追加のテキストを持つ。追加のテキストコンポーネントは、キーワード検索やテキストへの直接アクセスが有益であるところで使用されるかも知れない。例えば、索引、用語集などである。</li> 
+<li>全文音声・全文テキスト: これは完全な全文テキストと全文音声を持つDTBである。音声とテキストが同期される。</li> 
+<li>全文テキスト・一部の音声: これは完全な全文テキストと一部の音声を持つ構造化されたDTBである。このタイプのDTBは発音部分のみに音声が提供された辞書に使用することができる。</li> 
+<li>全文テキスト・音声なし: これはNCCと構造化されたテキストのみを格納したDTBしたものである。音声データはない。</li> 
+</ol> 
+<h1 id="documents">2.  この規格で使用されるドキュメントとファイル</h1> 
+<p id="tn040506">DAISY 2.02規格に準拠するため、DTBには、ちょうど1個の<a href="#ncc">NCC.HTML</a>ドキュメントと1個以上<a href="#smil">SMIL</a>ドキュメントがなくてはならない（must）。<a href="#dtbclass">DTBの種類</a>によるが、DTBには、1個以上の<a href="#audioformats">音声ファイル</a> 
+と1個以上の<a href="#textdoc">テキストコンテンツドキュメント（XHTML）</a> 
+があってもよい（may）。最終的に任意の<a href="#mastersmil">Master SMIL</a>ドキュメントもDTBにあってよい（may）。</p> 
+<p>これらのドキュメントの構造とファイルタイプ及びDTBが提供する機能は、下のセクション2.1から2.5で定義されている。</p> 
+<h2 id="ncc">2.1 Navigation Control Center (NCC) ドキュメント</h2> 
+<p id="tn07">NCCドキュメントには、DTBへのナビゲートが可能なエントリポイントのインデックスが格納されている。デフォルトの場合、これらのエントリポイントは、見出しの&lt;h1&gt;から&lt;h6&gt;とページの&lt;span&gt;要素で構成されている。&lt;div&gt;要素を用いることによって、テキストのブロック（グループ）もナビゲーションのために使用される。</p> 
+<p>NCCは、暗にDTBを構成する全てのメディアオブジェクトの連続再生順序を表す。これはナレーション および/または テキストの「フロー」として時々参照される。</p> 
+<p>NCCは、印刷物の目次（TOC）テーブルと必ずしも同一ではない。それは、印刷物ソースの目次（TOC）より多くの要素をしばしば持つだろう。つまり、NCCは、書籍の本文の内容と構造に基づいたTOCの拡張されたバージョンとしてもよい（may）。</p> 
+<p>NCCは<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">XHTML 1.0 </a> 
+Transitional DTDに準拠したドキュメントであるべきである（should）。HTML 4.01の使用は、DAISY DTBのこのバージョンの仕様では、非推奨となった。</p> 
+<p id="tn08">NCCドキュメントは&quot;NCC.HTML&quot;または&quot;ncc.html&quot;と名付けられなければならない（must）。</p> 
+<h3 id="ncchead">2.1.1 NCC.HTML &lt;head&gt;</h3> 
+<p>&lt;head&gt;要素は、次の子を包含しなければならない(must)。</p> 
+<dl> 
+<dt id="tn08b">title [ちょうど1個]</dt> 
+<dd><a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">XHTML 1.0</a> 
+仕様で定義されている。</dd> 
+<dt>meta [複数個]</dt> 
+<dd>セクション <a href="#h3metadef">2.1.3</a>で定義されているようなDAISY 2.02 meta要素のセット。</dd> 
+</dl> 
+<div class="notice"><b>注意事項</b> 
+- &lt;head&gt; 要素の子要素titleは、HTMLドキュメントそのものを指す。ドキュメント（DTB）のコンテンツの一部としてはみなされない。テキストと音声の同期は&lt;head&gt; 要素の子要素title上では発生しない。。</div> 
+<h3 id="h3metadescr">2.1.2 NCC.HTMLのメタデータ - 説明</h3> 
+<p id="tn11">NCC &lt;head&gt;要素は、子である&lt;META&gt;のセットを包含しなければならない（must）。これらは、技術的な説明のためのコンテンツだけではなく、書誌情報を持っている。</p> 
+<p>書誌メタデータのために、DAISY 2.02仕様は、国際的に認められ、幅広く受け入れられている15のデータカテゴリで構成されるツールであり、ドキュメントリソースの記述のために必要不可欠なルールである <a href="http://purl.org/DC/documents/rec-dces-19990702.htm">Dublin Core (DC) Metadata Initiative</a>要素セットを使用している。DC要素セットは、デジタル録音図書の書誌記述の広い範囲をカバーしているが、DC要素セットの15のデータカテゴリでは充分にカバーできない不可欠な情報がいくつかある。DAISY DTB専用の追加要素は、そのために開発された。これらの追加要素は、&quot;ncc&quot;というプレフィックスがついた要素として設計されている。</p> 
+<p>&lt;meta&gt;要素の一般的な構文は次のとおり。</p> 
+<pre class="example">
+&lt;meta name=&quot;metaname&quot; content=&quot;value of metaname&quot; scheme=&quot;scheme for value of metaname&quot; /&gt;
+</pre> 
+<h4>name属性</h4> 
+<p id="tn12">name属性は、あるmetaステートメントの内容に対する名前を格納する。DAISY 2.02 のDTBでは、&quot;dc:&quot; または &quot;ncc:&quot;のプレフィックスによって識別される２つのカテゴリのmeta nameがある。</p> 
+<dl> 
+<dt> 
+&quot;dc:&quot; プレフィックスはDublin Core要素ラベルであることを示している。</dt> 
+<dt>&quot;ncc:&quot; プレフィックスはDublin Core のデータカテゴリに含まれず、かつそれがDAISY DTB専用の要素であることを示している。次の要素名は、&quot;source&quot;という言葉が前につけられたDAISY専用の要素のラベルまたはDC要素のラベルである。後者の例では、その要素は、DAISY DTBが作成された印刷物の原資料を参照している。</dt> 
+</dl> 
+<h4>content属性</h4> 
+<p>content属性はname属性の値を持つ。</p> 
+<dl> 
+<dt>&quot;dc:&quot; プレフィックス要素はDublin Core Initiativeの規則に従ってDAISY DTBそのものに関する情報を持つ。</dt> 
+<dt>&quot;ncc:&quot;プレフィックス要素はDAISY DTBとその印刷物ソースに関する追加のメタデータを持つ。</dt> 
+</dl> 
+<p> 
+&quot;dc:&quot; と&quot;ncc:&quot;プレフィックスは小文字であるべきである（should）。 しかし、これらの属性を読み取るときに、再生システムは大文字・小文字を区別してはならない（must not）。</p> 
+<p>印刷物ソースに関する追加情報の提供に対応するために、プレフィックス&quot;ncc:&quot;をもつmetanameとセットで、Dublin Core要素のラベルがmetaステートメントで使用される。それは&quot;source&quot;という言葉が前におかれたDublin Core要素のラベルで構成される。</p> 
+<p>1つの例外があることに注意してほしい。印刷物ソースの版に関する情報はmetaname の&quot;ncc:sourceEdition&quot;を使用することで含まれている。DCはまだ版に関するデータを含めるためのソリューションを持っていない。</p> 
+<h4>scheme属性</h4> 
+<p>scheme属性は、content属性の値がどのように解釈される必要があるかについての参照を持つ。このような参照は、単純な構文モデルで構成されてよい（may）。しかし、標準的には、規格の名前またはオーソリティリストである。ファイルまたは規格を参照していないスキーム名を使用することは意味があることではない。多くの場合、スキームがないことも必要である。</p> 
+<h3 id="h3metadef">2.1.3 NCC.HTMLのメタデータ - 定義</h3> 
+<p>NCC.HTMLの&lt;meta&gt;要素セットは、次の定義リストに準拠しなければならない（must）。</p> 
+<dl> 
+<dt>dc:contributor</dt> 
+<dd>内容: 翻訳者、編集者、編纂者などのように、リソースのコンテンツへの貢献に責任を有する人名、組織名、サービス名。DAISY DTBの読み手（ナレーター）は含まれない</dd> 
+<dd id="tn13">出現:  任意</dd> 
+<dt>dc:creator</dt> 
+<dd>内容: 出版物の知的内容の著者名や作成者名</dd> 
+<dd id="tn14">出現:  必須（mandatory）（作成者が知られている場合）</dd> 
+<dt>dc:coverage</dt> 
+<dd>内容: リソースのコンテンツの 範囲や領域</dd> 
+<dd id="tn16">出現:  任意</dd> 
+<dt>dc:date</dt> 
+<dd>内容: DAISY DTBの出版日</dd> 
+<dd>スキーム: W3C / <a href="http://www.w3.org/TR/NOTE-datetime">ISO8601</a> 
+;推奨される構文:  &quot;yyyy-mm-dd&quot;</dd> 
+<dd id="tn17">出現:  必須（mandatory）</dd> 
+<dt>dc:description</dt> 
+<dd>内容: コンテンツの説明 - 注釈</dd> 
+<dd id="tn18">出現:  任意</dd> 
+<dt>dc:format</dt> 
+<dd>内容: DAISY DTB形式のコード;  &quot;Daisy 2.02&quot;</dd> 
+<dd id="tn19">出現:  必須（mandatory）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:format&quot;という名前を使用した要素も受け入れなければならない（must）。</dd> 
+<dt>dc:identifier</dt> 
+<dd>内容: （出版組織やグループにとってユニークな）DAISY出版物の識別子</dd> 
+<dd>スキーム: すでに存在するなら識別子のスキーム</dd> 
+<dd id="tn20">出現:  必須（mandatory）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:identifier&quot;という名前を使用した要素も受け入れなければならない（must）</dd> 
+<dt>dc:language</dt> 
+<dd>内容: 出版物の内容の言語</dd> 
+<dd>スキーム: <a href="http://www.oasis-open.org/cover/iso639a.html">ISO 639</a> 。その後に任意で<a href="http://www.oasis-open.org/cover/country3166.html">ISO 3166</a>の2文字の国コードをつける。スウェーデンなら&quot;SV&quot; または &quot;SV-SE&quot;、英国なら&quot;EN&quot; または &quot;EN-UK&quot; など</dd> 
+<dd id="tn21">出現:  必須（mandatory）</dd> 
+<dt>dc:publisher</dt> 
+<dd>内容: DAISY DTBの出版者</dd> 
+<dd id="tn22">出現:  必須（mandatory）</dd> 
+<dt>dc:relation</dt> 
+<dd>内容: 関連リソースへの参照</dd> 
+<dd id="tn23">出現:  任意</dd> 
+<dt>dc:rights</dt> 
+<dd>内容: DAISY DTB の権利とDAISY DTBに関係する権利の情報。具体的な法的事項の説明</dd> 
+<dd id="tn24">出現:  任意</dd> 
+<dt>dc:source</dt> 
+<dd>内容: 現在のリソースが由来する印刷物ソースへの参照。ISBNまたはスキームレス（schemeless）を使用</dd> 
+<dd>スキーム: ISBNまたはスキームレス（schemeless）</dd> 
+<dd id="tn25">出現:  任意（推奨）</dd> 
+<dt>dc:subject</dt> 
+<dd>内容: DAISY DTBのコンテンツのトピック。キーワードや分類コード</dd> 
+<dd>スキーム: すでに存在するのであれば、&quot;keyword&quot;がデフォルト</dd> 
+<dd id="tn26">出現:  任意（推奨）</dd> 
+<dt>dc:title</dt> 
+<dd>内容: DTBや出版物のタイトル</dd> 
+<dd id="tn27">出現:  必須（mandatory）</dd> 
+<dt>dc:type</dt> 
+<dd>内容: DAISY DTBのコンテンツの性質またはジャンル。通常、列挙されたリストからとる</dd> 
+<dd id="tn28">出現:  任意</dd> 
+<dt>ncc:charset</dt> 
+<dd>内容: DTBファイルセット内のファイルに記述されている文字セット。例えば、ISO 8859-1など</dd> 
+<dd id="tn29">出現:  必須（mandatory）</dd> 
+<dt>ncc:depth</dt> 
+<dd>内容: XHTMLの見出し h1からh6 のような、構造の深さを示す1から6までの正の整数
+</dd> 
+<dd id="tn30">出現: 任意（推奨）</dd> 
+<dt>ncc:files</dt> 
+<dd>内容: DAISY DTBの配布版を構成するファイルの絶対数を示す正の整数。TBが参照するファイルのみが含まれているべきである（shall）</dd> 
+<dd id="tnfiles">出現: 任意（推奨）</dd> 
+<dt>ncc:footnotes</dt> 
+<dd>内容: DTB内の脚注の総数を示す0または正の整数</dd> 
+<dd id="tnfnotes">出現: 脚注が使用されている場合は必須（mandatory）。コンテンツ値ゼロを包含している場合は任意（推奨）</dd> 
+<dt>ncc:generator</dt> 
+<dd>内容: NCCドキュメントを生成したソフトウェアの名前とバージョン</dd> 
+<dd id="tngen">出現:  任意</dd> 
+<dt>ncc:kByteSize</dt> 
+<dd>内容: DAISY DTBファイルセットのKB単位での全体のサイズ</dd> 
+<dd id="tnkbs">出現:  任意</dd> 
+<dt>ncc:maxPageNormal</dt> 
+<dd>内容: DTB内で出現する通常のページで最も大きい数値を示す0または正の整数</dd> 
+<dd id="tnmpn">出現: 任意（推奨）</dd> 
+<dt>ncc:multimediaType</dt> 
+<dd>内容:  上の<a href="#dtbclass">セクション1.3</a>でリスト化されているDAISY DTBカテゴリの1つ。type 1  &quot;audioOnly&quot;; type 2 &quot;audioNcc&quot;; type 3 &quot;audioPartText&quot;; type 4 &quot;audioFullText&quot;; type 5 &quot;textPartAudio&quot;; type 6 &quot;textNcc&quot; （<a href="http://www.daisy.org/dtbook/guidelines/draft/structguide.htm">DAISY structure guidelines</a>を参照すること ）</dd> 
+<dd id="tnmmt">出現: 任意（推奨）</dd> 
+<dt>ncc:narrator</dt> 
+<dd>内容: DTBの読み上げ者の名前。人名やDTBのテキストを読み上げる合成音声の名前</dd> 
+<dd id="tnNarrator">出現: 任意（推奨）</dd> 
+<dt>ncc:pageFront</dt> 
+<dd>内容: DTB内に出現するフロントページの総数を示す0または正の整数</dd> 
+<dd id="tnpfront">出現:  必須（mandatory）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:page-front&quot;という名前を使用した要素も受け入れなければならない（must）</dd> 
+<dt>ncc:pageNormal</dt> 
+<dd>内容: DTB内に出現する通常のページの総数を示す0または正の整数</dd> 
+<dd id="tnpnorm">出現:  必須（mandatory）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:page-normal&quot;という名前を使用した要素も受け入れなければならない（must）。</dd> 
+<dt>ncc:pageSpecial</dt> 
+<dd>内容: DTB内に出現する特殊なページの総数を示す0または正の整数</dd> 
+<dd id="tnpspec">出現:  必須（mandatory）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:page-special&quot;という名前を使用した要素も受け入れなければならない（must）。</dd> 
+<dt>ncc:prodNotes</dt> 
+<dd>内容: DTB内に出現する製作者の注釈の総数を示す0または正の整数</dd> 
+<dd id="prdnts">出現: 製作者の注釈が使用されている場合は必須（mandatory）。コンテンツ値がゼロの包含は任意（推奨）</dd> 
+<dt>ncc:producer</dt> 
+<dd>内容: DAISY DTBを製作する組織/製作単位の名前</dd> 
+<dd id="tnprod">出現:  任意</dd> 
+<dt>ncc:producedDate</dt> 
+<dd>内容: DTBの最初の版が製作された日</dd> 
+<dd>スキーム: W3C / <a href="http://www.w3.org/TR/NOTE-datetime">ISO8601</a> 
+;推奨される構文:  &quot;yyyy-mm-dd&quot;</dd> 
+<dd id="tnprodD">出現:  任意</dd> 
+<dt>ncc:revision</dt> 
+<dd>内容: 改訂番号を記述する整数</dd> 
+<dd id="tnrev">出現: 任意</dd> 
+<dt>ncc:revisionDate</dt> 
+<dd>内容: ncc:revisionに関連した日</dd> 
+<dd>スキーム: W3C / <a href="http://www.w3.org/TR/NOTE-datetime">ISO8601</a> 
+;推奨される構文:  &quot;yyyy-mm-dd&quot;</dd> 
+<dd id="tnrevD">出現: 任意</dd> 
+<dt>ncc:setInfo</dt> 
+<dd>内容: nのk。n個のDTBの配布メディアのk番目のメディア</dd> 
+<dd id="tnvolfmt">出現:  複数のボリュームDのDTBは必須（mandatory）。単一のボリュームのDTBに包含させるかいなかは任意（推奨）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:setinfo&quot;という名前を使用した要素も受け入れなければならない（must）。</dd> 
+<dt>ncc:sidebars</dt> 
+<dd>内容: DTB内に出現するサイトバーの総数を示す0または正の整数</dd> 
+<dd id="tnsbars">発生：サイドバーが使用されている場合は必須（mandatory）。コンテンツ値がゼロの包含は任意（推奨）</dd> 
+<dt>ncc:sourceDate</dt> 
+<dd>内容: 印刷元ソースの公開の日。これは通常、印刷本の出版の年になるだろう。</dd> 
+<dd>スキーム: W3C / <a href="http://www.w3.org/TR/NOTE-datetime">ISO8601</a> 
+;推奨される構文:  &quot;yyyy-mm-dd&quot;</dd> 
+<dd id="tnsdate">出現: 任意（推奨）</dd> 
+<dt>ncc:sourceEdition</dt> 
+<dd>内容: 印刷物ソースの版</dd> 
+<dd id="tnsedn">出現:  任意（推奨）</dd> 
+<dt>ncc:sourcePublisher</dt> 
+<dd>内容:  印刷物ソースのの出版社</dd> 
+<dd id="tnspub">出現:  任意（推奨）</dd> 
+<dt>ncc:sourceRights</dt> 
+<dd>内容: 印刷物ソースの内の権利と印刷物ソースに関係する権利に関する情報</dd> 
+<dd id="tnsrcrights">出現:  任意</dd> 
+<dt>ncc:sourceTitle</dt> 
+<dd>内容: 印刷物ソースのタイトル。dc:titleと異なる場合のみ使用される</dd> 
+<dd id="tnsrctitle">出現:  必須（mandatory）（タイトルが異なる場合）</dd> 
+<dt>ncc:tocItems</dt> 
+<dd>内容: NCCドキュメント内のナビゲーションポイントの数を示す正の整数</dd> 
+<dd id="tntocItemsP">出現:  必須（mandatory）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:tocitems&quot; と&quot;ncc:TOCitems&quot;という名前を使用した要素も受け入れなければならない（must）。</dd> 
+<dt>ncc:totalTime</dt> 
+<dd>内容: 記録した時間</dd> 
+<dd>スキーム: &quot;hh:mm:ss&quot;</dd> 
+<dd id="ttlTime">出現:  必須（mandatory）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:totaltime&quot;という名前を使用した要素も受け入れなければならない（must）。</dd> 
+<dt>http-equiv</dt> 
+<dd>内容: ドキュメントのコンテンツタイプと文字符号化を指定するステートメント</dd> 
+<dd id="httpEqv">出現:  任意</dd> 
+</dl> 
+<p>上の定義リストに加えて、製作者固有のメタデータの問題をサポートするために、任意のメタデータ要素を使用することができる。そのようなメタデータ要素には、&quot;prod:&quot;というプレフィックスがつけられるべきであり（shall）、再生システムには無視されるべきである（shall）。</p> 
+<div class="notice"><b>注意事項</b> 
+- NCC.HTML内の&lt;meta&gt;要素は常にフルDTBについて説明する。例：複数ボリュームのDTBでは、ncc:kByteSizeは現在のキャリアメディアに格納されるファイルサイズではなく、DTB全体のファイルセットの合計のサイズを記述している。複数のボリュームであることで値が変化するNCC.HTMLの&lt;meta&gt;要素は、ncc:setinfoのみである。</div> 
+<div class="notice"><b>注意事項</b> 
+- &lt;meta&gt;要素のコンテンツデータが、複数のエントリを持つ場合（例えば、複数の著者のいる図書のdc:creator）、その要素はDTBの&lt;meta&gt;要素セット内で複数回出現するべきである（should）。<a href="#nccMetaTab">付録A 1.2</a> 
+を参照すること。</div> 
+<div class="notice" id="oebMetaAttr"><b>注意事項</b> 
+- Open eBook&#8482;1.0の目的とするメタデータの調和のために、dc:contributorとdc:creatorで使用される &quot;role&quot;属性と&quot;file-as&quot;属性は DAISY 2.02の仕様に準拠しているとみなされる。</div> 
+<h3 id="h3metaex">2.1.4 NCC.HTML &lt;head&gt;の例</h3> 
+<p><em>（すべての必須（mandatory）および一部の任意の要素が、この例に含まれている）</em></p> 
+<pre class="example">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;title&gt;Economics&lt;/title&gt;
+  &lt;meta http-equiv=&quot;Content-type&quot; content=&#39;text/html; charset=&quot;iso-8859-1&quot;&#39; /&gt;
+  &lt;meta name=&quot;dc:title&quot; content=&quot;Economics&quot; /&gt;
+  &lt;meta name=&quot;dc:creator&quot; content=&quot;Richard G. Lipsey&quot; /&gt;
+  &lt;meta name=&quot;dc:creator&quot; content=&quot;Paul N. Courant&quot; /&gt;
+  &lt;meta name=&quot;dc:creator&quot; content=&quot;Douglas D. Purvis&quot; /&gt;
+  &lt;meta name=&quot;dc:creator&quot; content=&quot;Peter O. Steiner&quot; /&gt;
+  &lt;meta name=&quot;dc:date&quot; content=&quot;2000-09-05&quot; scheme=&quot;yyyy-mm-dd&quot; /&gt;
+  &lt;meta name=&quot;dc:format&quot; content=&quot;Daisy 2.02&quot; /&gt;
+  &lt;meta name=&quot;dc:identifier&quot; content=&quot;DTB00345&quot; /&gt;
+  &lt;meta name=&quot;dc:language&quot; content=&quot;EN&quot; scheme=&quot;ISO 639&quot; /&gt;
+  &lt;meta name=&quot;dc:publisher&quot; content=&quot;TPB&quot; /&gt;
+  &lt;meta name=&quot;dc:source&quot; content=&quot;0-065-01022-1&quot; scheme=&quot;ISBN&quot; /&gt;
+  &lt;meta name=&quot;dc:subject&quot; content=&quot;Qb&quot; /&gt;
+  &lt;meta name=&quot;ncc:sourceDate&quot; content=&quot;1993&quot; scheme=&quot;yyyy&quot; /&gt;
+  &lt;meta name=&quot;ncc:sourceEdition&quot; content=&quot;1&quot; /&gt;
+  &lt;meta name=&quot;ncc:sourcePublisher&quot; content=&quot;Harper Collins&quot; /&gt;
+  &lt;meta name=&quot;ncc:charset&quot; content=&quot;iso-8859-1&quot; /&gt;
+  &lt;meta name=&quot;ncc:generator&quot; content=&quot;LpStudioGen 1.6&quot; /&gt;
+  &lt;meta name=&quot;ncc:narrator&quot; content=&quot;Timothy Ocklind&quot; /&gt;
+  &lt;meta name=&quot;ncc:tocItems&quot; content=&quot;1024&quot; /&gt;
+  &lt;meta name=&quot;ncc:totalTime&quot; content=&quot;91:27:21&quot; scheme=&quot;hh:mm:ss&quot; /&gt;
+  &lt;meta name=&quot;ncc:pageNormal&quot; content=&quot;881&quot; /&gt;
+  &lt;meta name=&quot;ncc:maxPageNormal&quot; content=&quot;881&quot; /&gt;
+  &lt;meta name=&quot;ncc:pageFront&quot; content=&quot;27&quot; /&gt;
+  &lt;meta name=&quot;ncc:pageSpecial&quot; content=&quot;45&quot; /&gt;
+  &lt;meta name=&quot;ncc:prodNotes&quot; content=&quot;0&quot; /&gt;
+  &lt;meta name=&quot;ncc:footnotes&quot; content=&quot;0&quot; /&gt;
+  &lt;meta name=&quot;ncc:sidebars&quot; content=&quot;0&quot; /&gt;
+  &lt;meta name=&quot;ncc:setInfo&quot; content=&quot;1 of 3&quot; /&gt;
+  &lt;meta name=&quot;ncc:depth&quot; content=&quot;4&quot; /&gt;
+  &lt;meta name=&quot;ncc:kByteSize&quot; content=&quot;1530000&quot; /&gt;
+  &lt;meta name=&quot;ncc:multimediaType&quot; content=&quot;audioNCC&quot; /&gt;
+  &lt;meta name=&quot;ncc:files&quot; content=&quot;97&quot; /&gt;
+  &lt;meta name=&quot;prod:recLocation&quot; content=&quot;Studio 2&quot; /&gt;
+  &lt;meta name=&quot;prod:recEngineer&quot; content=&quot;J Klein&quot; /&gt;
+&lt;/head&gt;
+</pre> 
+<h3 id="tnbody">2.1.5 NCC.HTML &lt;body&gt;</h3> 
+<p>DAISY 2.02 NCCの&lt;body&gt;要素は以下の子を包含しなければならない（must）。</p> 
+<dl> 
+<dt id="tnbh1">h1 [1個または複数個]</dt> 
+<dd><a href="#h3headings">セクション2.1.6</a>で定義されている。</dd> 
+</dl> 
+<p>DAISY 2.02 NCCの&lt;body&gt;要素は以下の子を包含してもよい（may）。</p> 
+<dl> 
+<dt>h2-h6  [0個または複数個]</dt> 
+<dd><a href="#h3headings">セクション2.1.6</a>で定義されている。</dd> 
+<dt>span [0個または複数個]</dt> 
+<dd><a href="#h3span">セクション2.1.7</a>で定義されている。</dd> 
+<dt>div [0個または複数個]</dt> 
+<dd><a href="#h3blocks">セクション2.1.8</a>で定義されている。</dd> 
+</dl> 
+<p>&lt;h1&gt; から&lt;h6&gt;、&lt;span&gt;と&lt;div&gt;以外の要素はNCC.HTML &lt;body&gt;の子として出現するべきである（shall）。</p> 
+<h3 id="h3headings">2.1.6 見出し</h3> 
+<p>見出し参照は、章や節へのナビゲーションをサポートするために、DAISY 2.02 DTBで提供されるDTBにおける見出しは、XHTML<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">見出し</a>要素の1から6（&lt;h1&gt;から&lt;h6&gt;）によって表現される。見出し要素のコンテンツは印刷物ソースに見られるような章や節の名称であるべきである（should）。</p> 
+<p>見出し要素の一般的な構文は次のとおりである。</p> 
+<pre class="example">
+&lt;hx class=&quot;value&quot; id=&quot;value&quot;&gt;&lt;a href=&quot;smil#fragment&quot;&gt;Heading content&lt;/a&gt;&lt;/hx&gt;
+</pre> 
+<p>見出し要素は、次の属性を持たなければならない（must）。</p> 
+<dl> 
+<dt id="tnHid">id</dt> 
+<dd><a href="#h3id">セクション2.1.9</a>で定義されている。</dd> 
+<dt>class [title 見出しに]</dt> 
+<dd><a href="#headattr">セクション2.1.6.1</a>で定義されている。</dd> 
+</dl> 
+<p>見出し要素は次の属性をもってもよい（may）。</p> 
+<dl> 
+<dt>class [title ではない他の見出し]</dt> 
+<dd><a href="#headattr">セクション2.1.6.1</a>で定義されている.
+</dd> 
+</dl> 
+<p>見出し要素は、次の子要素をもっていなくてはならない（must）。</p> 
+<dl> 
+<dt>a</dt> 
+<dd><a href="#anchor">セクション2.1.10</a>で定義されている。</dd> 
+</dl> 
+<h4 id="headattr">2.1.6.1 見出し要素のclass属性の値</h4> 
+<p>class属性は、追加のセマンテクスの情報を提供するために使用されてもよい（may）。見出し要素で使用されるクラスの属性の典型的な値は次のとおりである。</p> 
+<p>title、 jacket、front、title-page、copyright-page、acknowledgments、prolog、introduction、dedication、foreword、preface、print-toc、part、chapter、section、sub-section、minor-head、bibliography、glossary、appendix、index、index-category.</p> 
+<p id="tnH1first">NCCの&lt;body&gt;の最初のエントリは、DTBのtitleセクションでなくてはならない（must）。使用される要素は&lt;h1&gt;でなければならない（must）。この見出しに使用されるclass属性は&quot;title&quot;でなくてはならない（must）。</p> 
+<h4>2.1.6.2 見出しのネスト</h4> 
+<p id="tnhorder">HTML 4.01とXHTML 1.0とは対照的に、DAISY 2.02仕様は、見出しを適切にネストすることを要求する。levelをスキップすることができない。例えば、&lt;h3&gt;はいつも&lt;h2&gt;の後（または他の&lt;h3&gt;の後）に配置されなければならないし（must）、&lt;h2&gt;は&lt;h1&gt;の後（または他の&lt;h2&gt;）に配置されなければならない（must）。</p> 
+<h4>2.1.6.3 見出しのネストの適切な例と不適切な例</h4> 
+<h5>見出しの適切なネストの例</h5> 
+<pre class="example">
+...
+&lt;h1&gt;The nature of economics&lt;/h1&gt;
+    &lt;h2&gt;The economic problem&lt;/h2&gt;
+    &lt;h2&gt;Economics as a social science&lt;/h2&gt;
+        &lt;h3&gt;The scientific approach&lt;/h3&gt;
+&lt;h1&gt;An overview of the market economy&lt;/h1&gt;
+...
+</pre> 
+<h5>見出しの不適切なネストの例</h5> 
+<pre class="example">
+...
+&lt;h1&gt;Demand, supply and price&lt;/h1&gt;
+    &lt;h2&gt;Demand&lt;/h2&gt;
+    &lt;h2&gt;Supply&lt;/h2&gt;
+            &lt;h4&gt;Quantity supplied&lt;/h4&gt;
+        &lt;h3&gt;Determination&lt;/h3&gt;
+&lt;h1&gt;Elasticity&lt;/h1&gt;
+...
+</pre> 
+<h3 id="h3span">2.1.7 ページ番号</h3> 
+<p>エンドユーザーのページへのナビゲーションをサポートするためにページ参照がDAISY 2.02 DTB内で提供される。DTB内で出てくるページは<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&lt;span&gt;</a> 
+要素によって表現される。</p> 
+<p>&lt;span&gt;要素は、ページの先頭を識別する。&lt;span&gt;要素の内容は、印刷本に表示されるページ番号である。</p> 
+<div class="notice"><b>注意</b> 
+- 書籍の中で連続する番号付けされたページの一部である空白ページは、そのページを連続する番号で表現した&lt;span&gt;要素でマークされることが推奨される（recommended）。</div> 
+<p>&lt;span&gt;要素の一般的な構文は次のとおりである。</p> 
+<pre class="example">
+&lt;span class=&quot;value&quot; id=&quot;value&quot;&gt;&lt;a href=&quot;smil#fragment&quot;&gt;span content&lt;/a&gt;&lt;/span&gt;
+</pre> 
+<p>&lt;span&gt;要素は、次の要素を包含しなくてはならない(must)。</p> 
+<dl> 
+<dt id="tnspna">a</dt> 
+<dd><a href="#anchor">セクション2.1.10</a>で定義されている。</dd> 
+</dl> 
+<p>&lt;span&gt;要素は、次の属性を包含しなければならない(must)。</p> 
+<dl> 
+<dt id="tnspnid">id</dt> 
+<dd><a href="#h3id">セクション2.1.9</a>で定義されている。</dd> 
+<dt id="tnspClass">class</dt> 
+<dd><a href="#spanclass">セクション2.1.7.1</a>で定義されている。</dd> 
+</dl> 
+<h4 id="spanclass">2.1.7.1 ページのための有効なクラス属性の値</h4> 
+<p>ページに使用されるときに&lt;span&gt;要素で出てくるclass属性の値は次のとおりである。</p> 
+<dl> 
+<dt>page-front</dt> 
+<dd>class属性 &quot;page-front&quot;は、書籍の本体部分の連続して番号付けされたページの前の書籍の前部に配置されたページを表す。</dd> 
+<dt>page-normal</dt> 
+<dd>class属性 &quot;page-normal&quot; は、1から開始し、後付または書籍の最後まで続く通常の体系を持つページを表す。通常のページ番号の内容は正の整数のascii文字による値でなければならない（must）ことはとても重要である。再生機は、この正の整数をナビゲーションの目的のために使用するだろう。</dd> 
+<dt>page-special</dt> 
+<dd>class属性 &quot;page-special&quot; は、前付の部分ではなく、多くの印刷出版物で使用されている従来の連続した番号付けシステムに従わない、または、書籍を通して使用される連続した番号付けシステムから離れたページを表す。この例として、アルファと番号の組み合わせで構成されるページ番号の組み合わせたものが挙げられる。それは、セパレーター及び/またはサフィックスと同様に、パート及び/または 章の番号、パート及び/または 章の中の連続した番号を表している。例えば、ページ「1-15b」は、セクション１、ページ15の2番目に挿入されたページを表す（それはページ「1-15a」の後ろに直接的に続き、ページ&quot;1-16&quot;やページ&quot;2-1&quot;の前の地点のポイントに現れるだろう。）</dd> 
+</dl> 
+<h3 id="h3blocks">2.1.8 ブロック（&lt;div&gt;）</h3> 
+<p>テキストのブロック（group）は、ナビゲーションのために使用してもよい（may）。例えば、パラグラフ、リスト項目、またはテーブルの行は、そのような構造要素によって、ナビゲーションを提供するために、NCCで識別されてもよい（may）。NCCでは、グループ化要素の<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&lt;div&gt;</a>は、これらのブロックをポイントするプレースホルダーとして使用される。&lt;div&gt;要素の内容は、エンドユーザーによって要求されるナビゲーションに関係して製作者によって決定される。フルテキストが使用されている場合、NCC内の&lt;div&gt;はユニークなIDを持つどのHTMLの要素を指し示すことができる。</p> 
+<p>&lt;div&gt;要素の一般的な構文は次のとおりである。</p> 
+<pre class="example">
+&lt;div class=&quot;value&quot; id=&quot;value&quot;&gt; &lt;a href=&quot;smil#fragment&quot;&gt;content&lt;/a&gt;&lt;/div&gt;
+</pre> 
+<p>&lt;div&gt;要素は、以下の属性を持たなければならない(must)。</p> 
+<dl> 
+<dt id="tndivid">id</dt> 
+<dd><a href="#h3id">セクション2.1.9</a>で定義されている。</dd> 
+<dt id="tndivclass">class</dt> 
+<dd><a href="#blk_clsattr">セクション2.1.8.1</a>で定義されている。</dd> 
+</dl> 
+<p>&lt;div&gt;要素は、以下の要素を包含しなければならない(must)。</p> 
+<dl> 
+<dt id="tndiva">a</dt> 
+<dd><a href="#anchor">セクション2.1.10</a>で定義されている</dd> 
+</dl> 
+<h4 id="blk_clsattr">2.1.8.1 ブロック : &lt;div&gt;要素に有効なクラス属性の値</h4> 
+<p>&lt;div&gt;要素で出現するclass属性の値は次のとおりである。</p> 
+<dl> 
+<dt>group</dt> 
+</dl> 
+<h3 id="h3id">2.1.9 id属性</h3> 
+<p id="idVal">NCC.HTML内の&lt;body&gt;要素のそれぞれの子は同期に使用されるためのid属性を持たなくてはならない（must）。</p><p>id属性の値は、([A-Za-z])の文字 で始まらなくてはならない（must）。そして、その後に任意の数の文字、数字（[0-9]）、ハイフン(&quot; - &quot;)、アンダースコア（&quot;_&quot;）、コロン（&quot;:&quot;）、そしてピリオド(&quot;.&quot;)を続けてもよい（may）。</p> 
+<div class="notice" id="idcs"><b>注意</b> 
+- id属性の値は、大文字と小文字が区別される。</div> 
+<div id="tnidnocolon" class="notice"><b>注意</b> 
+- id属性の値でコロンの使用は避けるべきである（should）。</div> 
+<h3 id="anchor">2.1.10 アンカー要素（&lt;a&gt;）</h3> 
+<p id="tnwavcount">NCC.HTMLドキュメントの&lt;body&gt;要素のそれぞれの子はアンカー要素を持たなくてはならない（must）。href属性は、このアンカーをちょうど1個のリンクのソースアンカーにする。</p> 
+<p>&lt;a&gt;要素の一般的な構文は次のとおりである。</p> 
+<pre class="example">
+&lt;a href=&quot;smil#fragment&quot;&gt;document content&lt;/a&gt;
+</pre> 
+<p>&lt;a&gt;要素は、以下の属性を持たなくてはならない（must）。</p> 
+<dl> 
+<dt id="tnahref">href</dt> 
+<dd><a href="#ahref">セクション2.1.10.1</a>で定義されている</dd> 
+</dl> 
+<p id="tnanonempty">ドキュメントの内容は常にアンカーの開始タグと終了タグの間に出現しなければならない（must）。</p> 
+<h4 id="ahref">2.1.10.1 href属性</h4> 
+<p id="tnhrefsmil">href属性は、ソースアンカー（NCC内の現在の位置）と参照先のアンカー（SMILドキュメント内の位置）の間のリンクを定義する。これはフラグメント識別子がリソース、すなわちSMILドキュメント内の位置のID指し示す<a href="http://www.ietf.org/rfc/rfc2396.txt">URI</a>として表現される。</p> 
+<p>DAISY 2.02の書籍では、SMILの<a href="#smilpar">&lt;par&gt;</a>や<a href="#smiltext">&lt;text&gt;</a>要素に存在する参照先のアンカーが求められる（required）。要素の他の型へのポインタは出現してはならない（must not）。</p> 
+<p id="tntgtpar">参照先のアンカーとしての&lt;par&gt;要素の使用が推奨される（must not）。ターゲットが&lt;text&gt;要素である場合、&lt;text&gt;要素が親である&lt;par&gt;内の最初の要素であることを強く推奨する（recommended）。</p> 
+<p id="tnsyncpts">NCC.HTML &lt;body&gt;の全ての子要素は同期ポイントをもたなくてはならない（must）。すなわち、それらはSMILファイル内の&lt;par&gt;または&lt;text&gt;要素内の参照先のアンカーを指し示すhref属性を持つ&lt;a&gt;要素をを持たなくてはならない（must）。</p> 
+<h3>2.1.11 NCC.HTML &lt;body&gt;の例</h3> 
+<pre class="example">
+&lt;body&gt;
+&lt;h1 class=&quot;title&quot; id=&quot;econ_0001&quot;&gt;&lt;a href=&quot;econ0001.smil#ec1a_0001&quot;&gt;Economics by Richard G. Lipsey et al..&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;econ_0002&quot;&gt;&lt;a href=&quot;econ0002.smil#ec2a0001&quot;&gt;Information about the talking book&lt;/a&gt;&lt;/h1&gt;
+&lt;h1 id=&quot;econ_0003&quot;&gt;&lt;a href=&quot;econ0003.smil#ec3a0001&quot;&gt;Contents in Brief&lt;/a&gt;&lt;/h1&gt;
+&lt;span class=&quot;page-front&quot; id=&quot;econ_0004&quot;&gt;&lt;a href=&quot;econ0003.smil#ec3a0002&quot;&gt;iv&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;page-front&quot; id=&quot;econ_0005&quot;&gt;&lt;a href=&quot;econ0003.smil#ec3a0003&quot;&gt;v&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;page-front&quot; id=&quot;econ_0006&quot;&gt;&lt;a href=&quot;econ0003.smil#ec3a0004&quot;&gt;vi&lt;/a&gt;&lt;/span&gt;
+...
+&lt;span class=&quot;page-normal&quot; id=&quot;econ_0021&quot;&gt;&lt;a href=&quot;econ0008.smil#ec8a0003&quot;&gt;1&lt;/a&gt;&lt;/span&gt;
+&lt;h1 class=&quot;part&quot; id=&quot;econ_0022&quot;&gt;&lt;a href=&quot;econ0009.smil#ec9a0001&quot;&gt;Part 1. The nature of economics&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 class=&quot;chapter&quot; id=&quot;econ_0023&quot;&gt;&lt;a href=&quot;econ0010.smil#ec100001&quot;&gt;1. The economic problem&lt;/a&gt;&lt;/h2&gt;
+&lt;span class=&quot;page-normal&quot; id=&quot;econ_0024&quot;&gt;&lt;a href=&quot;econ0010.smil#ec100002&quot;&gt;2&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;page-normal&quot; id=&quot;econ_0025&quot;&gt;&lt;a href=&quot;econ0010.smil#ec100003&quot;&gt;3&lt;/a&gt;&lt;/span&gt;
+&lt;h3 id=&quot;econ_0026&quot;&gt;&lt;a href=&quot;econ0010.smil#ec100004&quot;&gt;What is economics?&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&quot;econ_0027&quot;&gt;&lt;a href=&quot;econ0010.smil#ec100005&quot;&gt;Resources and commodities&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;econ_0028&quot;&gt;&lt;a href=&quot;econ0010.smil#ec100006&quot;&gt;Scarcity&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;econ_0029&quot;&gt;&lt;a href=&quot;econ0010.smil#ec100007&quot;&gt;Choice&lt;/a&gt;&lt;/h4&gt;
+&lt;span class=&quot;page-normal&quot; id=&quot;econ_0031&quot;&gt;&lt;a href=&quot;econ0010.smil#ec100008&quot;&gt;4&lt;/a&gt;&lt;/span&gt;
+...
+&lt;span class=&quot;page-special&quot; id=&quot;econ_0934&quot;&gt;&lt;a href=&quot;econ0085.smil#ec850027&quot;&gt;G-1&lt;/a&gt;&lt;/span&gt;
+&lt;h1 class=&quot;glossary&quot; id=&quot;econ_0935&quot;&gt;&lt;a href=&quot;econ0086.smil#ec860001&quot;&gt;Glossary&lt;/a&gt;&lt;/h1&gt;
+&lt;div id=&quot;econ_0936&quot; class=&quot;group&quot;&gt;&lt;a href=&quot;econ0086.smil#ec860002&quot;&gt;Glossary item 1&lt;/a&gt;&lt;/div&gt;
+&lt;div id=&quot;econ_0937&quot; class=&quot;group&quot;&gt;&lt;a href=&quot;econ0086.smil#ec860003&quot;&gt;Glossary item 2&lt;/a&gt;&lt;/div&gt;
+&lt;div id=&quot;econ_0938&quot; class=&quot;group&quot;&gt;&lt;a href=&quot;econ0086.smil#ec860004&quot;&gt;Glossary item 3&lt;/a&gt;&lt;/div&gt;
+...
+&lt;h1 id=&quot;econ_0946&quot;&gt;&lt;a href=&quot;econ0088.smil#ec880001&quot;&gt;Ending announcement&lt;/a&gt;&lt;/h1&gt;
+&lt;/body&gt;
+</pre> 
+<h3 id="h2option">2.1.12 任意（optional）の内容</h3> 
+<div class="notice"><b>注意</b> 
+- セクション2.1.12から2.1.13.2で述べられている機能は任意である（optional）。</div> 
+<p id="tnoptOnOff">NCCは、エンドユーザがオンまたはオフにすることができる要素への参照を包含してもよい（may）。これらの項目のデフォルトスタイルは、「オン」にするべきである（should）。<em>注釈の参照</em> 
+、 <em>非必須サイドバー</em> 
+、 <em>任意の製作者の注釈</em> 
+、そして<em>ページ番号が</em>このカテゴリーに分類される。XHTML <a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">&lt;span&gt;</a>要素は、NCC&lt;body&gt;でこれらの項目を指し示すために使用されなければならない（must）。</p> 
+<p>&lt;span&gt;要素には、次の属性を持たなくてはならない（must）。</p> 
+<dl> 
+<dt>id</dt> 
+<dd><a href="#h3id">セクション2.1.9</a>で定義されている。</dd> 
+<dt>class</dt> 
+<dd><a href="#option_clsattr">セクション2.1.12.1</a>で定義されている。</dd> 
+</dl> 
+<p>&lt;span&gt;要素は、次の要素を包含しなくてはならない（must）。</p> 
+<dl> 
+<dt>a</dt> 
+<dd><a href="#anchor">セクション2.1.10</a>で定義されている。</dd> 
+</dl> 
+<h4 id="option_clsattr">2.1.12.1 任意（optional）の内容: &lt;span&gt;要素に有効なclass属性の値</h4> 
+<p>&lt;span&gt;要素で出現するclass属性の値は次のとおりである。</p> 
+<dl> 
+<dt>sidebar</dt> 
+<dd>サイドバーへの参照、すなわち、印刷物ソースにおける追加のテキストは、書籍の主要な読み上げ部分とは別個のものとして提示されていること。</dd> 
+<dt>optional-prodnote</dt> 
+<dd>任意（optional）である製作者注釈、すなわち、オリジナルである印刷物の原資料の一部ではない読み手（ナレーター）/製作者による注釈。</dd> 
+<dt>noteref</dt> 
+<dd>footnote、endnote、annotation、rear note参照のペア</dd> 
+<dt><em>その他の有効な値</em></dt> 
+<dd>セクション<a href="#blk_clsattr">2.1.8.1</a>で定義されるブロックの使用すること。</dd> 
+</dl> 
+<h4 id="option_exampl">2.1.12.2 任意（optional）の内容: NCCの例</h4> 
+<h5>サイドバーの例</h5> 
+<pre class="example">
+&lt;span class=&quot;sidebar&quot; id=&quot;econ0047&quot;&gt;
+  &lt;a href=&quot;econ0056.smil#ec560004&quot;&gt;Sidebar&lt;/a&gt;
+&lt;/span&gt;
+</pre> 
+<h5>任意（optional）である製作者注釈の例</h5> 
+<pre class="example">
+&lt;span class=&quot;optional-prodnote&quot; id=&quot;econ0057&quot;&gt;
+  &lt;a href=&quot;econ0060.smil#ec600004&quot;&gt;Producer&#39;s Note&lt;/a&gt;
+&lt;/span&gt;
+</pre> 
+<h5>注釈参照（Footnote、Annotation、End Note、Rear Note)の例</h5> 
+<pre class="example">
+&lt;span class=&quot;noteref&quot; id=&quot;ncc003&quot;&gt;
+  &lt;a href=&quot;smil001.smil#par002&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;
+&lt;/span&gt;
+</pre> 
+<h4 id="option_srval">2.1.12.3 任意（optional）の内容: SMIL &lt;par&gt;要素上のシステムが要求する有効な属性の値</h4> 
+<p id="tnsrOnPar">SMIL 1.0のシステムが要求するテスト属性は、サイドバー、footnote、製作者ノート、ページ番号のようなコンテンツの選択的な再生を制御するために使用されなければならない（shall）。システムが要求する属性は&lt;par&gt;要素の中で出現しなくてはならない（must）。</p> 
+<p id="tnParAtts">&lt;par&gt;要素上で発生するシステムが求める属性の値は次のとおりである。</p> 
+<dl> 
+<dt>sidebar-on</dt> 
+<dt>prodnote-on</dt> 
+<dt>footnote-on</dt> 
+<dt>pagenumber-on</dt> 
+</dl> 
+<h4 id="optex">2.1.12.4 任意（optional）の内容:  SMIL例</h4> 
+<h5>サイドバーの例</h5> 
+<p><em>上のNCCのサイドバーの例では、SMILドキュメント内のスイッチ機構の次の使用方法が使用されなければならない（shall）。</em><em>（同じ構文は、製作者注釈とページ番号に適用される。）</em></p> 
+<pre class="example">
+&lt;seq dur=&quot;123.45s&quot;&gt;
+  &lt;!--Par pre sidebar --&gt;
+  &lt;par endsync=&quot;last&quot; id=&quot;ec560003&quot;&gt; 
+    &lt;text src=&quot;ncc.html#econ0046&quot; /&gt;
+    &lt;seq&gt;
+      &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=0.000s&quot; clip-end=&quot;npt=2.507s&quot; id=&quot;phrs_0001&quot; /&gt;
+      &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=3.345&quot; clip-end=&quot;npt=6.123s&quot; id=&quot;phrs_0002&quot; /&gt;
+    &lt;seq&gt;
+  &lt;/par&gt;
+  &lt;!--Par for sidebar --&gt;
+  &lt;par endsync=&quot;last&quot; id=&quot;ec560004&quot; system-required=&quot;sidebar-on&quot;&gt;
+      &lt;text src=&quot;ncc.html#econ0047&quot; /&gt;
+      &lt;seq&gt;
+        &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=6.123s&quot; clip-end=&quot;npt=8.345s&quot; id=&quot;phrs_0003&quot; /&gt;
+        &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=8.345ss&quot; clip-end=&quot;npt=10.567s&quot; id=&quot;phrs_0004&quot; /&gt;
+      &lt;seq&gt;  
+  &lt;/par&gt;
+  &lt;!--Par post sidebar --&gt;
+  &lt;par endsync=&quot;last&quot; id=&quot;ec560005&quot;&gt; 
+    &lt;text src=&quot;ncc.html#econ0046&quot; /&gt;
+    &lt;seq&gt;
+      &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=10.567s&quot; clip-end=&quot;npt=22.347s&quot; id=&quot;phrs_0005&quot; /&gt;
+      &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=22.347s&quot; clip-end=&quot;npt=26.435s&quot; id=&quot;phrs_0006&quot; /&gt;
+    &lt;seq&gt;
+  &lt;/par&gt;
+&lt;/seq&gt;
+</pre> 
+<h5 id="noteex">脚注の例</h5> 
+<p><em>footnoteのSMIL構文は、サイドバーと製作者ノートとは異なる。</em><em>ここでは、ネストされた&lt;seq&gt;要素が2つの &lt;par&gt;要素を格納するために使用されている。最初の&lt;par&gt;が注釈参照を格納し、2番目の&lt;par&gt;が注釈本体を格納している。</em><em>次のSMILの構文は、上のNCC脚注例に相当する。</em></p> 
+<pre class="example">
+&lt;body&gt;
+  &lt;seq dur=&quot;123.45s&quot;&gt;
+    &lt;!--Par pre footnote --&gt;
+    &lt;par endsync=&quot;last&quot; id=&quot;par001&quot;&gt; 
+      &lt;text src=&quot;ncc.html#ncc001&quot; /&gt;
+      &lt;seq&gt;
+        &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=0.000s&quot; clip-end=&quot;npt=2.507s&quot; id=&quot;phrs_0001&quot; /&gt;
+        &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=3.507&quot; clip-end=&quot;npt=6.507s&quot; id=&quot;phrs_0002&quot; /&gt;
+      &lt;seq&gt;
+    &lt;/par&gt;
+    &lt;!--nested seq begins here--&gt;
+    &lt;seq&gt;
+      &lt;!--Par for note reference --&gt;  
+      &lt;par endsync=&quot;last&quot; id=&quot;par002&quot;&gt; 
+        &lt;text src=&quot;ncc.html#ncc003&quot; /&gt;
+        &lt;seq&gt;
+        &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=6.507s&quot; clip-end=&quot;npt=7.507s&quot; id=&quot;phrs_0003&quot; /&gt;
+        &lt;/seq&gt;
+      &lt;/par&gt;
+      &lt;!--Par for note body --&gt;
+      &lt;par endsync=&quot;last&quot; id=&quot;par003&quot; system-required=&quot;footnote-on&quot;&gt; 
+        &lt;text src=&quot;ncc.html#ncc003&quot; /&gt;
+        &lt;seq&gt;
+          &lt;audio src=&quot;audio009.mp3&quot; clip-begin=&quot;npt=7.507s&quot; clip-end=&quot;npt=10.507s&quot; id=&quot;phrs_0004&quot; /&gt;
+          &lt;audio src=&quot;audio009.mp3&quot; clip-begin=&quot;npt=10.507s&quot; clip-end=&quot;12.507s&quot; id=&quot;phrs_0005&quot; /&gt;
+        &lt;seq&gt;
+      &lt;/par&gt;
+    &lt;!--nested seq ends here--&gt;
+    &lt;/seq&gt; 
+    &lt;!--Par post footnote&gt;
+    &lt;par endsync=&quot;last&quot;  id=&quot;par004&quot;&gt; 
+      &lt;text src=&quot;ncc.html#ncc001&quot; /&gt;
+      &lt;seq&gt;
+        &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=12.507s&quot; clip-end=&quot;npt=14.507s&quot; id=&quot;phrs_0006 /&gt;
+        &lt;audio src=&quot;audio001.mp3&quot; clip-begin=&quot;npt=14.507s&quot; clip-end=&quot;npt=18.507s&quot;&quot; id=&quot;phrs_0007&quot; /&gt;
+      &lt;seq&gt;
+    &lt;/par&gt;
+  &lt;/seq&gt;
+&lt;/body&gt;
+</pre> 
+<div class="sidebar"> 
+<h4>2.1.12.5 任意（optional）の内容 -  典型的な再生システムの動作</h4> 
+<p id="tnuserPrec">再生システムは、サイドバーのような任意（optional）の内容リストをユーザーに提供することで、ドキュメント構造物の再生をユーザーが制御することを認めている。表示されないサイバーをユーザーが要求する場合、システムが要求する&quot;sidebar-on&quot;の値はアクティブではないだろう。このケースでは、再生システムがsystem-required=&quot;sidebar-on&quot;を持つ&lt;par&gt;要素に出会った際は、その要素を無視するだろう。サイドバーがユーザーによって要求されているなら、再生システムはアクティブとして&quot;sidebar-on&quot;の値をセットするだろう。そして、system-required=&quot;sidebar-on&quot;属性を持つどの要素も再生するだろう。</p> 
+</div> 
+<div class="sidebar"> 
+<h4>2.1.12.6 任意（optional）の内容 - エンドユーザー関係</h4> 
+<p id="tnusrChoice">エンドユーザーは、任意の項目をオフにし、後にこれらの項目をナビゲートするためにNCCエントリを使用することを選んでもよい（may）。</p> 
+</div> 
+<h3>2.1.13 CSSを使用してリソースファイルの定義</h3> 
+<p id="tnrfdefs">再生システム、ハードウェア装置とソフトウェアの両方は、書籍の構造的要素の音声による記述を提供するメカニズムを要求する。再生システムはテキスト情報の合成音声による読み上げに対応してよい（may）が、事前に録音された音声アナウンスメントのほうがより望ましい。ほとんど場合、そのほうが自然で、また、全てのデバイスで対応しているためである。事前に録音されたメッセージによって、再生デバイスは、&quot;chapter&quot;、&quot;section&quot;、その他のclass名のような要素を正しくアナウンスすることができる。</p> 
+<p>リソースファイルは、これを達成するために使用することができる。このケースのリソースは、構造要素と関係づけられた個々の音声ファイルである。従来のソフトウェア開発モデルでは、単一のリソースファイルが、複数のリソース定義を指し示すまたは包含してよい（may）。現在は、この特定のアプリケーションで使用するためにリソースファイルを定義するための既存の規格は存在しない。</p> 
+<p>音声スタイルシート（Audio Style Sheet）はこのリソース情報を定義するために使用される。音声スタイルシート（Audio Style Sheet）はW3Cの<a href="http://www.w3.org/TR/REC-CSS2">Cascading Style Sheet勧告</a>の一部である 。再生システムが使用するリソース定義を提供することに加え、DAISY 2.02 DTBの再生中に、音声スタイルシート（Audio Cascading Style Sheet : ACSS) を一般的な音声スタイリングのために使用してもよい（may）。</p> 
+<p>音声スタイルシート（Audio Style Sheet）はオーディオキューと構造要素を関連づけるために必要な定義を提供する。構造要素は、要素名（たとえばh1など）、またはclass名（例えばchapterなど）にしてよい（may）。再生システムは、音声スタイルシート（Audio Style Sheet）を解釈し、エンドユーザーに要素を再生するためにこの情報を使用します。例としては、位置（「私はどこ」アナウンス）や構造情報が含まれる。</p> 
+<p>&quot;earcons&quot;を実装し、音声合成によってテキストコンテンツをフォーマットするために再生システムは、一般化されたオーディオのスタイリングをサポートしてもよい（may）。音声スタイルのこの特定の利用は、DAISY 2.02では、正式に定義されたものでははく、また要求されるものではない。</p> 
+<h4>2.1.13.1 リソースファイルとして使用されたACSSの例</h4> 
+<p><em>これは、音声ファイルファイルをドキュメント要素（h1）と2つのclass名（&quot;chapter&quot;と&quot;subhead&quot;）に関連付けさせたファイルの例である。</em></p> 
+<pre class="example">
+h1 {cue-before: uri(&quot;resources/en-h1.wav&quot;)}
+.chapter {cue-before: uri(&quot;resources/en-chapter.mp3&quot;)}
+.subhead {cue-before: uri(&quot;resources/en-subhead.mp3&quot;)}
+</pre> 
+<p>URI値は要素やclass名と関連付けられた音声を包含するファイルを指している。音声リソースファイルの場所は、製作者に委ねられる。この例では、音声リソースファイルを「リソース」のサブディレクトリに格納されている。</p> 
+<h4>2.1.13.2 ACSSファイルをDTBに関連付け</h4> 
+<p>スタイルシートをXHTML文書と関連付けるための標準的なメカニズムは、&lt;link&gt;要素を介して行われる。&lt;link&gt;要素の形式は次のとおりです。</p> 
+<pre class="example">
+&lt;link rel=&quot;stylesheet&quot; href=&quot;en-resource.css&quot; media=&quot;aural&quot; title=&quot;daisy Resource File&quot;&gt;
+</pre> 
+<p>スタイルシートのリンク参照はNCC.HTMLファイルに包含されているべきである（should）。個別のXHTMLソースファイルに音声と映像の表現のための追加のスタイルシートへの参照も含めてもよい（may）。これらはXHTMLスタイルシート&lt;link&gt;要素を使用して、ドキュメント自身の中で指定されなければならないし（must）。スタイルシートに適合するメディア属性の値を参照しなければならない（must）。</p> 
+<h2 id="textdoc">2.2 テキストコンテンツドキュメント（XHTML）</h2> 
+<p>テキストコンテンツが見出し、ページ、その他のコンテンツへ単純な参照に限定される、すなわち<a href="#dtbclass">DTBのタイプ1 と2</a>に適合するものならば、NCC.HTMLドキュメントをテキストコンテンツのキャリアとして使用してもよい（may）。DTBが幅広いテキストコンテンツを持つならば、すなわち、コンテンツが<a href="#dtbclass">DTBのタイプ 3から6</a> 
+に適合するものであるならば、追加のテキストコンテンツドキュメントの使用が求められる（required）。</p> 
+<p id="tnaddnltxt">追加のテキストコンテンツドキュメントは<a href="http://www.w3.org/TR/xhtml1/">XHTML 1.0</a>に準拠したドキュメントでなければならない（must）。<a href="http://www.w3.org/TR/html401">HTML 4.01</a>の使用は、DAISY DTBのこのバージョンの仕様では、非推奨となった。</p> 
+<h3 id="add_head">2.2.1 テキストコンテンツドキュメント&lt;head&gt;</h3> 
+<p>テキストコンテンツドキュメントの&lt;head&gt;要素は次の子を包含しなければならない（must）。</p> 
+<dl> 
+<dt>title [ちょうど1個]</dt> 
+<dd><a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">XHTML 1.0</a>仕様で定義されている。</dd> 
+</dl> 
+<p>テキストコンテンツドキュメントの&lt;head&gt;要素は次の子を包含してもよい（may）。</p> 
+<dl> 
+<dt>meta [0個か複数個]</dt> 
+<dd><a href="#h3metadef">セクション2.1.3</a>で定義されているようなDAISY 2.02 meta要素のセット</dd> 
+</dl> 
+<h4>2.2.1.1 テキストコンテンツドキュメントのメタデータ - 定義</h4>テキストコンテンツドキュメント内の&lt;meta&gt;要素のセットは、次の定義リストに準拠しなければならない（must）。<dl> 
+<dt>dc:identifier</dt> 
+<dd>内容: DAISY出版の識別子（出版組織やグループにユニーク）</dd> 
+<dd>スキーム: すでに存在するなら、識別子スキーム</dd> 
+<dd>出現:  任意（推奨）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;ncc:identifier&quot;という名前を使用した要素も受け入れなければならない（must）。</dd> 
+<dt><em>その他の&lt;meta&gt;要素</em></dt> 
+<dd><a href="#metadef">セクション2.1.3</a>で定義されている他の書誌的および技術的な記述的メタ要素の使用は任意である（optional）。</dd> 
+</dl> 
+<h3 id="add_body">2.2.2 テキストコンテンツドキュメント&lt;body&gt;  - 推奨</h3> 
+<p>テキストコンテンツドキュメントの&lt;body&gt;では、パラグラフ、リスト項目、またはテーブル、整形済みのテキストなどのような、構造ブロック要素のロジカルな使用、シンプルな使用が推奨される（recommended）。テキストの整形するためにテーブルを使用することは推奨されない。また、フレームや他の視覚的な整形機能を使用することは推奨されない。</p> 
+<h3 id="additional">2.2.3 複数のXHTMLテキストコンテンツドキュメント</h3> 
+<p>複数のXHTMLファイルを、テキストコンテンツをキャリアとして使用してもよい（may）。これはフルテキスト製品のDTBのケースになることがより頻繁になってもよい（may）。</p> 
+<p>正しくXHTMLファイルの順序を識別するために、XHTMLの<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">link</a>要素を使用してもよい（may）。</p> 
+<h4>2.2.3.1 リンクデータの例</h4> 
+<pre class="example">
+&lt;head&gt;
+...
+  &lt;link rel=&quot;start&quot; href=&quot;first-file.html&quot;&gt;
+  &lt;link rel=&quot;previous&quot; href=&quot;previous-file.html&quot;&gt;
+  &lt;link rel=&quot;next&quot; href=&quot;next-file.html&quot;&gt;
+...
+&lt;/head&gt;
+</pre> 
+<div id="tnstEnd" class="notice"><b>注意</b> 
+- 最初に使用されるファイルは&quot;previous&quot;という値を持つrel属性のlink要素を持っていないだろう。そして、最後に使用されるファイルは&quot;next&quot;という値を持つrel属性を持つlink要素を持っていないだろう。</div> 
+<h2 id="smil">2.3 SMILドキュメント</h2> 
+<p id="tnsmiParse2">DAISY DTBのSMILドキュメントは、全ての、または定義されたセグメントのDTBコンテンツのテキストと音声の同期機能を提供する<a href="http://www.w3.org/TR/REC-smil/">SMIL 1.0</a> 
+に準拠したドキュメントである。テキストと音声が同期されたDAISY DTBの1つのSMILドキュメントは、そのドキュメント自身の内部が、常に連続的なシーケンスであり、テキスト 及び/または 音声メディアオブジェクトを参照する1つや数個の並列時間のグループ、または同期ユニットを格納している。</p> 
+<p>以下から、DAISY 2.02 DTBの中のSMIL 1.0の実装のためのドキュメント構造規定について述べる。</p> 
+<h3>2.3.1 SMIL &lt;head&gt;</h3> 
+<p>&lt;head&gt;要素は、次の子を持たなければならない（must）。</p> 
+<dl> 
+<dt id="tnsmMetaCount">meta [複数個]</dt> 
+<dd><a href="#smilmeta_def">セクション2.3.2.1</a>で定義されている</dd> 
+</dl> 
+<p>&lt;head&gt;要素は、次の子を持ってもよい（may）。</p> 
+<dl> 
+<dt id="tnsmLayoutCount">layout [ちょうど1個]</dt> 
+<dd><a href="#smillayout_def">セクション2.3.2.2</a>で定義されている</dd> 
+</dl> 
+<h4 id="smilhead_des">2.3.1.1 SMIL &lt;head&gt;要素 - 記述</h4> 
+<p>SMIL &lt;head&gt;で使用されている&lt;meta&gt;要素の構文はNCC.HTMLで使用されているものに対応している - <a href="#h3metadescr">2.1.2</a>セクションを参照すること。</p> 
+<p>また、SMIL &lt;head&gt;は、ドキュメントの&lt;body&gt;内の要素を抽象的なレンダリングサーフェイス上（視覚的または聴覚的に）にどのように配置するかを決定する&lt;layout&gt;要素を持ってもよい（may）。</p> 
+<h3 id="smilhead_def">2.3.2 SMIL &lt;head&gt;要素 - 定義</h3> 
+<h4 id="smilmeta_def">2.3.2.1 &lt;meta&gt;要素</h4> 
+<dl> 
+<dt>ncc:generator</dt> 
+<dd>内容: SMILドキュメントを生成したソフトウェアの名前とバージョン</dd> 
+<dd id="tnsmGen">出現:  任意</dd> 
+<dt>dc:format</dt> 
+<dd>内容: DAISY図書形式のコード; &quot;Daisy 2.02&quot;</dd> 
+<dd id="tnsmFmt">出現:  必須（mandatory）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;format&quot;という名前を使用した要素も受け入れなければならない（must）</dd> 
+<dt>dc:identifier</dt> 
+<dd>内容: （出版組織にとってユニークな）DAISY出版物の識別子</dd> 
+<dd>スキーム: もし存在するなら識別子スキーム</dd> 
+<dd id="tnsmIdent">出現:  任意（推奨）</dd> 
+<dt>dc:title</dt> 
+<dd>内容: 本や出版物のタイトル</dd> 
+<dd id="tnsmdcTitle">出現:  任意</dd> 
+<dt>title</dt> 
+<dd>内容: 本のSMILのセクションのタイトル</dd> 
+<dd id="tnsmTitle">出現:  任意</dd> 
+<dt>ncc:totalElapsedTime</dt> 
+<dd>内容: 現在のSMILドキュメントの開始より前のSMIL時間の合計</dd> 
+<dd>スキーム: SMILクロック; 推奨される構文（recommended）: &quot;hh:mm:ss&quot;</dd> 
+<dd id="tnsmtet">出現:  任意（推奨）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;total-elapsed-time&quot;という名前を使用した要素も受け入れなければならない（must）</dd> 
+<dt>ncc:timeInThisSmil</dt> 
+<dd>内容: 現在のSMILドキュメント内のSMIL時間の合計</dd> 
+<dd>スキーム: SMILクロック; 推奨される構文: &quot;hh:mm:ss&quot;</dd> 
+<dd id="tntits">出現:  任意（推奨）</dd> 
+<dd class="deprecated">注意: 再生システムは非推奨の&quot;time-in-this-smil&quot;という名前を使用した要素も受け入れなければならない（must）</dd> 
+</dl> 
+<h4 id="smillayout_def">2.3.2.2 &lt;layout&gt;要素</h4> 
+<p>&lt;layout&gt;要素 は、ドキュメントの&lt;body&gt;内の&lt;text&gt;要素がレンダリングされる時にどのように配置されるかを定義する。ドキュメントがlayout要素を包含していない場合、body要素の配置は、実装依存である。</p> 
+<p>&lt;layout&gt;要素の一般的な構文は次のとおりである。</p> 
+<pre class="example">
+&lt;layout&gt;
+  &lt;region id=&quot;value&quot; /&gt;
+&lt;/layout&gt;
+</pre> 
+<p>&lt;layout&gt;要素は次の子を包含しなくてはならない（must）。</p> 
+<dl> 
+<dt id="tnsmReg">region [1個または数個]</dt> 
+<dd><a href="#smilregion">セクション2.3.2.3</a>で定義されている</dd> 
+</dl> 
+<h4 id="smilregion">2.3.2.3 &lt;region&gt;要素</h4> 
+<p>&lt;region&gt;要素はの&lt;text&gt;要素の位置、大きさ、スケーリングを制御する。region要素は、位置づけ可能な要素のregion属性をregionのidの値にセットすることで、&lt;text&gt;要素に適用される。</p> 
+<p>&lt;region&gt;要素で出現する属性は次のとおりである。</p> 
+<dl> 
+<dt>id</dt> 
+<dd>内容: XML識別子</dd> 
+<dd id="tnsmRegId">出現:  必須（mandatory）</dd> 
+<dt><em>その他の属性</em></dt> 
+<dd id="othrAttrRegn">DAISY2.02準拠のスコープを超えるものではあるが、その他の<a href="http://www.w3.org/TR/REC-smil/#region">SMIL 1.0のregionの属性</a>が使用されてもよい（may）。</dd> 
+</dl> 
+<h3>2.3.3 SMIL &lt;body&gt;</h3> 
+<p>DAISY 2.02 SMILの&lt;body&gt;要素は次の子を包含しなければならない（must）。</p> 
+<dl> 
+<dt id="tnsmSeq">seq [ちょうど1個]</dt> 
+<dd><a href="#smilseq">セクション2.3.3.1</a>で定義されている</dd> 
+</dl> 
+<h4 id="smilseq">2.3.3.1 &lt;seq&gt;要素</h4> 
+<p>&lt;seq&gt;要素は、その子が時系列に整列される時間コンテナである。次の定義リストでは、&lt;body&gt;の子として出現する&lt;seq&gt;要素は、&quot;main&quot;&lt;seq&gt;として参照される。そして、ネストされた&lt;seq&gt;要素は&quot;nested&quot;としてとして参照される。</p> 
+<p>DAISY 2.02 SMILの&quot;main&quot;の&lt;seq&gt;要素は、以下の子を包含しなくてはならない（must）。</p> 
+<dl> 
+<dt id="tnsmSeqPar">par [1個または数個]</dt> 
+<dd><a href="#smilpar">セクション2.3.3.3</a>で定義されている。</dd> 
+</dl> 
+<p>DAISY 2.02 SMILの&quot;main&quot;の&lt;seq&gt;要素は、以下の子を包含してもよい（may）。</p> 
+<dl> 
+<dt id="tnsmSeqSeq">seq [1個または数個]</dt> 
+<dd><a href="#noteex">ノートの参照</a>のみで使用される</dd> 
+</dl> 
+<p>DAISY 2.02 SMILのネストされた&lt;seq&gt;要素は、以下の子の1つを包含しなくてはならない（must）。</p> 
+<dl> 
+<dt id="nseqAud">audio [1個または数個]</dt> 
+<dd><a href="#smilaudi">セクション2.3.3.7</a>で定義されている</dd> 
+<dt id="nseqPar">par [ちょうど２個]</dt> 
+<dd><a href="#smilpar">セクション2.3.3.3</a>で定義されている</dd> 
+<dd><a href="#noteex">ノートの参照</a>でのみ使用される</dd> 
+<dt id="nseqOthr"><em>他の子</em></dt> 
+<dd>DAISY 2.02準拠のスコープを超えるものではあるが、他の<a href="http://www.w3.org/TR/REC-smil/#media-object">SMIL 1.0メディアオブジェクト</a>が、&lt;seq&gt;の子であってよい（may）。</dd> 
+</dl> 
+<p id="nseqChld">ネストされたの&lt;seq&gt;要素が異なるタイプの子を包含してはならない（must not）。</p> 
+<h4>2.3.3.2 &lt;seq&gt;要素の属性</h4> 
+<p>&lt;seq&gt;要素で出現する属性は次のとおりである。</p> 
+<dl> 
+<dt>dur</dt> 
+<dd>内容: &lt;seq&gt;の明示的な持続時間を定義するSMILクロック値。</dd> 
+<dd>スキーム: SMIL timecount。要求される構文（required）: &quot;ss.s&quot;</dd> 
+<dd id="tnsmSeqDur">出現: mainの&lt;seq&gt;では必須（required）</dd> 
+<dt>id</dt> 
+<dd>内容: XML識別子</dd> 
+<dd id="seqId">出現:  任意</dd> 
+</dl> 
+<h4 id="smilpar">2.3.3.3 &lt;par&gt;要素</h4> 
+<p>&lt;par&gt;要素は時系列に子を整列させない時間コンテナである。&lt;seq&gt;要素とは反対に同時に出現する。言い換えれば、&lt;par&gt;要素内のメディアオブジェクトは、互いに同期されている。</p> 
+<p>DAISY 2.02 SMILの&lt;par&gt;要素は、以下の子を包含しなくてはならない（must）。</p> 
+<dl> 
+<dt id="tnsmText">text [ちょうど1個]</dt> 
+<dd><a href="#smiltext">セクション2.3.3.5</a>で定義されている</dd> 
+</dl> 
+<p>DAISY 2.02 SMILの&lt;par&gt;要素は、以下の子を包含してもよい（may）。</p> 
+<dl> 
+<dt>audio [ちょうど1個]</dt> 
+<dd><a href="#smilaudi">セクション2.3.3.7</a>で定義されている</dd> 
+<dt>seq [1個または数個]</dt> 
+<dd><a href="#smilseq">セクション2.3.3.1</a>で定義されている</dd> 
+<dt><em>他の子</em></dt> 
+<dd>DAISY 2.02準拠のスコープを超えるものではあるが、他の<a href="http://www.w3.org/TR/REC-smil/#media-object">SMIL 1.0メディアオブジェクト</a>が、&lt;par&gt;の子であってよい（may）。</dd> 
+</dl> 
+<h4 id="parattr">2.3.3.4 &lt;par&gt;要素の属性</h4> 
+<p>&lt;par&gt;要素で出現する属性は次のとおりである。</p> 
+<dl> 
+<dt>endsync</dt> 
+<dd>内容: デフォルト値は、&quot;last&quot;で、par要素の黙示的な持続時間が、子の望まれる持続時間の最大値であることを定義している。</dd> 
+<dd id="tnsmParEndsync">出現: 必須（required）</dd> 
+<dt>system-required</dt> 
+<dd>内容: <a href="#option_srval">セクション2.1.12.3</a>で定義された値</dd> 
+<dd id="tnsmSysReq">出現:  <a href="#h2option">optional content</a> 
+が使用されるのなら必須（required） </dd> 
+<dt>id</dt> 
+<dd>内容: XML識別子</dd> 
+<dd id="tnsmParId">出現:  任意（推奨）</dd> 
+</dl> 
+<h4 id="smiltext">2.3.3.5 &lt;text&gt;要素</h4> 
+<p>&lt;text&gt;要素は本質的持続時間のないメディアオブジェクトである。DAISY DTBの<a href="#dtbclass">タイプ1〜5</a>の場合 、その持続時間は、それが同期される音声によって決定されるだろう。</p> 
+<h4>2.3.3.6 &lt;text&gt;要素の属性</h4> 
+<p>&lt;text&gt;要素で出現する属性は次のとおりである。</p> 
+<dl> 
+<dt>src</dt> 
+<dd>内容: フラグメント識別子を持つメディアオブジェクトのURI</dd> 
+<dd id="tnsmTextSrc">出現:  必須（required）</dd> 
+<dt>id</dt> 
+<dd>内容: XML識別子</dd> 
+<dd id="tnsmTextID">出現:  必須（required）</dd> 
+<dt>region</dt> 
+<dd>内容: IDREFマッチングするドキュメントの&lt;region&gt;要素の１つ（<a href="#smilregion">2.3.2.3</a>をみよ ）</dd> 
+<dd id="tnsmReg2">出現:  複数の領域が使用されている場合に必須（required）</dd> 
+</dl> 
+<p>src属性の値は、メディアオブジェクトのURIである。この場合、現在同期されているXHTMLドキュメントのコンテンツ、例えば、見出し、ページ番号、ブロックテキストなどへのポインタである。</p> 
+<p id="tnsmNccOnly">&lt;text&gt;要素のsrc属性がファイルNCC.HTMLを参照している場合、同じDTB内の他のtext要素がNCC.HTMLファイル以外のファイルを参照するsrc属性を持つべきではない（should not）。</p> 
+<div class="notice"><b>注意事項</b> 
+- text要素の属性としてのsrcは、id属性を指すことによってドキュメント内の下位の位置（<a href="http://www.ietf.org/rfc/rfc2396.txt">フラグメント識別子</a>）を表現する。</div> 
+<h4 id="smilaudi">2.3.3.7 &lt;audio&gt;要素</h4> 
+<p>&lt;audio&gt;要素は、本質的持続時間を持つメディアオブジェクトである。</p> 
+<h4>2.3.3.8  &lt;audio&gt;要素の属性</h4> 
+<p>&lt;audio&gt;要素で出現する属性は次のとおりである。</p> 
+<dl> 
+<dt>src</dt> 
+<dd>内容: フラグメント識別子を持つメディアオブジェクトのURI</dd> 
+<dd id="tnsmAudioSrc">出現:  必須（required）</dd> 
+<dt>id</dt> 
+<dd>内容: XML識別子</dd> 
+<dd id="tnsmAudioId">出現:  必須（required）</dd> 
+<dt>clip-begin</dt> 
+<dd>内容: SMILクロック値</dd> 
+<dd>スキーム: SMILのtimecount。要求される（required）構文: &quot;npt=ss.s&quot;</dd> 
+<dd id="tnsmAudioCB">出現: 下位の位置が使用される場合は必須（required）</dd> 
+<dt>clip-end</dt> 
+<dd>内容: SMILクロック値</dd> 
+<dd>スキーム: SMILのtimecount。要求される（required）構文: &quot;npt=ss.s&quot;</dd> 
+<dd id="tnsmAudioCE">出現: 下位の位置が使用される場合は必須（required）</dd> 
+</dl> 
+<p>src属性の値は、メディアオブジェクトのURIである。この場合、現在同期されているオーディオを含むファイルへのポインタである。参照されたオーディオオブジェクトが全体として再生されない場合、下位の位置は、sub-clipの開始と終了を指定するclip-begin属性とclip-end属性によって定義される。いくつかの下位の位置が順次出現した場合は、それらはseq要素内に配置される。</p> 
+<p id="tnsmCBCE">clip-begin属性とclip-end属性の値は、クロック値が続いてのメートル法の指定子でなければならない（must）。SMIL 1.0仕様で指定可能なメートル法の指定子で、DAISY DTBのものは「通常再生時間（Normal Play Time）」を使用しなければならない（must）。メートル法の指定子は&quot;npt&quot;である。クロック値は、デフォルトのSMIL 1 timecount（秒）を使用して、法定のSMIL timecount値で表現されなければならない（must）。ミリ秒の分解能で秒の端数を指定することを強く推奨する（recommended）。</p> 
+<p id="tnsmParTypes">&lt;par&gt;は、同じタイプの数個のメディアオブジェクトを決して持ってはならない（must not）。例えば、多くて1個の&lt;text&gt;と1個の&lt;audio&gt;の参照などである（それもメディアオブジェクトがネストされた&lt;seq&gt;内に含まれていない場合に限られる）。
+</p> 
+<div class="notice"><b>注意事項</b> 
+- 参照された全てのメディアオブジェクトはid属性を保有していなければならない（must）。</div> 
+<h3>2.3.4 SMILの例</h3> 
+<p><em>最初の&lt;par&gt;は全体の音声ファイルがどこでレンダリングされるべきかの例を示している。</em><em>二番目の&lt;par&gt;はセグメント（下位の位置）に分割され、&lt;seq&gt;で記述される音声ファイルを示している。</em></p> 
+<pre class="example">
+&lt;!DOCTYPE SMIL PUBLIC &quot;-//W3C//DTD SMIL 1.0//EN&quot; &quot;http://www.w3.org/TR/REC-SMIL/SMIL10.dtd&quot;&gt;
+&lt;smil&gt;
+  &lt;head&gt;
+    &lt;meta name=&quot;ncc:generator&quot; content=&quot;LpStudioGen v1.6&quot; /&gt;
+    &lt;meta name=&quot;dc:identifier&quot; content=&quot;DTB00345&quot; /&gt;
+    &lt;meta name=&quot;dc:format&quot; content=&quot;Daisy 2.02&quot; /&gt;
+    &lt;meta name=&quot;dc:title&quot; content=&quot;Economics&quot; /&gt;
+    &lt;meta name=&quot;title&quot; content=&quot;13. Monopoly&quot; /&gt;
+    &lt;meta name=&quot;ncc:totalElapsedTime&quot; content=&quot;14:04:48&quot; /&gt;
+    &lt;meta name=&quot;ncc:timeInThisSmil&quot; content=&quot;0:02:38&quot; /&gt;
+    &lt;layout&gt;
+        &lt;region id=&quot;txtView&quot; /&gt;
+    &lt;/layout&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;seq dur=&quot;158.485s&quot;&gt;
+      &lt;par endsync=&quot;last&quot; id=&quot;ec79_0002&quot;&gt;
+        &lt;text src=&quot;ncc.html#econ_0346&quot; id=&quot;ec79_0003&quot; /&gt;
+        &lt;audio src=&quot;econ25000c.mp3 id=&quot;ec79_0004&quot; /&gt;
+      &lt;/par&gt;
+      &lt;par endsync=&quot;last&quot; id=&quot;ec79_0005&quot;&gt;
+        &lt;text src=&quot;ncc.html#econ_0348&quot; id=&quot;ec79_0006&quot; /&gt;
+        &lt;seq id=&quot;ec79_0007&quot;&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=72.200s&quot; clip-end=&quot;npt=74.659s&quot; id=&quot;phrs_0011&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=74.659s&quot; clip-end=&quot;npt=81.269s&quot; id=&quot;phrs_0012&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=81.269s&quot; clip-end=&quot;npt=91.691s&quot; id=&quot;phrs_0013&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=91.691s&quot; clip-end=&quot;npt=95.477s&quot; id=&quot;phrs_0014&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=95.477s&quot; clip-end=&quot;npt=110.575s&quot; id=&quot;phrs_0015&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=110.575s&quot; clip-end=&quot;npt=115.777s&quot; id=&quot;phrs_0016&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=115.777s&quot; clip-end=&quot;npt=119.980s&quot; id=&quot;phrs_0017&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=119.980s&quot; clip-end=&quot;npt=127.816s&quot; id=&quot;phrs_0018&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=127.816s&quot; clip-end=&quot;npt=135.288s&quot; id=&quot;phrs_0019&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=135.288s&quot; clip-end=&quot;npt=141.507s&quot; id=&quot;phrs_0020&quot; /&gt;
+            &lt;audio src=&quot;econ25000d.mp3&quot; clip-begin=&quot;npt=141.507s&quot; clip-end=&quot;npt=158.485s&quot; id=&quot;phrs_0021&quot; /&gt;
+        &lt;/seq&gt;
+      &lt;/par&gt;
+    &lt;/seq&gt;
+  &lt;/body&gt;
+&lt;/smil&gt;
+</pre> 
+<h4 id="ncc_smil">2.3.4.1 NCC  -  SMIL  - 音声関係</h4> 
+<p id="tnnccSmil">各SMILドキュメントの最初の&lt;par&gt;の最初の&lt;text&gt;要素は見出し要素（h1からh6）を参照しなければならない（must）。言い換えれば、各SMILドキュメントは、HTMLの見出しの同期の提供から開始しなければならない（must）。h1の見出しから開始することを推奨する（recommended ）。これ以外にテキスト構造とSMILの間に必須となる関係はない。</p> 
+<p>音声ファイルとSMILドキュメントの間に必須となる関係はない。1つのSMILドキュメントが、（seqレベルあるいはclipレベルで）数個の音声ファイルを指し示してもよいし（may）、非連続な音声ファイルのセグメントを指し示してもよい（may）。</p> 
+<p>次は認められたSMILの&lt;seq&gt;セグメントの連続である。</p> 
+<pre class="example">
+     ...
+     &lt;audio src=&quot;econ0001.mp3&quot; clip-begin=&quot;npt=0.000s&quot; clip-end=&quot;npt=4.659s&quot; id=&quot;phrs_0001&quot; /&gt;
+     &lt;audio src=&quot;econ0002.mp3&quot; clip-begin=&quot;npt=74.659s&quot; clip-end=&quot;npt=81.269s&quot; id=&quot;phrs_0002&quot; /&gt;
+     &lt;audio src=&quot;econ0001.mp3&quot; clip-begin=&quot;npt=4.659s&quot; clip-end=&quot;npt=6.691s&quot; id=&quot;phrs_0003&quot; /&gt;
+     &lt;audio src=&quot;econ0001.mp3&quot; clip-begin=&quot;npt=6.691s&quot; clip-end=&quot;npt=8.477s&quot; id=&quot;phrs_0004&quot; /&gt;
+     ...
+</pre> 
+<p>また、次も認められたSMILの&lt;seq&gt;セグメントの連続である。</p> 
+<pre class="example">
+     ...
+     &lt;audio src=&quot;econ0001.mp3&quot; clip-begin=&quot;npt=0.000s&quot; clip-end=&quot;npt=4.659s&quot; id=&quot;phrs_0001&quot; /&gt;
+     &lt;audio src=&quot;econ0001.mp3&quot; clip-begin=&quot;npt=74.659s&quot; clip-end=&quot;npt=81.269s&quot; id=&quot;phrs_0002&quot; /&gt;
+     &lt;audio src=&quot;econ0001.mp3&quot; clip-begin=&quot;npt=4.659s&quot; clip-end=&quot;npt=6.691s&quot; id=&quot;phrs_0003&quot; /&gt;
+     &lt;audio src=&quot;econ0001.mp3&quot; clip-begin=&quot;npt=6.691s&quot; clip-end=&quot;npt=8.477s&quot; id=&quot;phrs_0004&quot; /&gt;
+     ...
+<br /> 
+<br /> 
+</pre> 
+<div class="sidebar"> 
+<h3>2.3.5 NCC - SMIL関係 : 典型的な再生システムのふるまい</h3> 
+<p>再生システムは、レンダリングされるメディアオブジェクトへのエントリポイントとしてNCC内の情報を使用する。同期されたNCC要素内のURIは、SMILドキュメント内のフラグメント（メディアオブジェクトのid）を指し示している。</p> 
+<p>現在のSMILドキュメントの最後のオブジェクトが完全にレンダリングされるまでレンダリングが続行される。その後、再生システムは、レンダリングすべき次のSMILオブジェクトを指し示すURIを見つけるために制御階層（つまり、NCC）のより高いレベルに戻る。</p> 
+</div> 
+<h3 id="smilExt">2.3.6  SMILファイルの拡張子 </h3> 
+<p id="tnsmExt">すべてのSMILファイルは、拡張子&quot;.smil&quot;または拡張子&quot;.SMIL&quot;を持たなくてはならない（must）。</p> 
+<div class="notice"><b>注意事項</b> 
+- CD-ROMに書き込む時のSMILファイルの拡張子は、有効ではない拡張子&quot;.smi&quot;に切り詰めてもよい（may）。これと他のパスとファイル名は選択されたCD-ROMのファイルシステムに影響を受けることがありうる。CD-ROMに収録されたDAISY DTBのディストリビュータは、選択されたファイルシステムが製作工程で使用された文字と互換性があることが確実でなければならない（must）。<a href="#cdrom">セクション3.4</a>参照すること。</div> 
+<h3 id="smilName">2.3.7 SMILのファイル名</h3> 
+<p id="tnsmName">SMILのファイル名には、文字（[A-Za-z]）、数字（[0-9]）、ハイフン（&quot;-&quot;）、アンダースコア（&quot;_&quot;）のみが使用されることを強く推奨する（recommended）。</p> 
+<h2 id="mastersmil">2.4 Master SMILドキュメント</h2> 
+<p>Master SMILドキュメントは、 DTBコンポーネントのSMILドキュメントを再生順に並べたリストで構成される、任意の（optional）<a href="http://www.w3.org/TR/REC-smil/">SMIL 1.0</a>準拠ドキュメントである。</p> 
+<p id="tnsmMstr">DTB内で他のSMILドキュメントとの容易な識別性を提供するために、Master SMILドキュメントは&quot;master.smil&quot; または &quot;MASTER.SMIL&quot;と名付けラれなkればならない（must）。</p> 
+<h3>2.4.1 Master SMIL &lt;head&gt;</h3> 
+<p>&lt;head&gt;要素は、以下の子を包含しなくてはならない（must）。</p> 
+<dl> 
+<dt id="msmMta">meta [複数個]</dt> 
+<dd><a href="#mstrmeta_def">セクション2.4.2</a>で定義されている</dd> 
+</dl> 
+<p>&lt;head&gt;要素は、以下の子を包含してもよい（may）。</p> 
+<dl> 
+<dt>layout [ちょうど１個]</dt> 
+<dd><a href="#smillayout_def">セクション2.3.2.2</a>で定義されている</dd> 
+</dl> 
+<h3 id="mstrmeta_def">2.4.2 Master SMILメタデータ - 定義</h3> 
+<dl> 
+<dt>dc:title</dt> 
+<dd>内容: DTBまたは出版物のタイトル</dd> 
+<dd id="msmMtTtl">出現: 必須（mandatory）</dd> 
+<dt>dc:identifier</dt> 
+<dd>内容: （出版組織やグループにとってユニークな）DAISY出版物の識別子</dd> 
+<dd>スキーム: 識別子方式と、既存の</dd> 
+<dd id="msmMtId">出現: 必須（mandatory）</dd> 
+<dt>dc:format</dt> 
+<dd>内容: DAISY DTB形式のコード; &quot;Daisy 2.02&quot;</dd> 
+<dd id="msmMtFrm">出現: 必須（mandatory）</dd> 
+<dt>ncc:generator</dt> 
+<dd>内容: Master SMILドキュメントを生成したソフトウェアの名前とバージョン</dd> 
+<dd id="msmMtGen">出現:  任意</dd> 
+<dt>ncc:timeInThisSmil</dt> 
+<dd>内容: Master SMILドキュメント内のSMIL時間の合計</dd> 
+<dd>スキーム: SMILクロック; 推奨される構文: &quot;hh:mm:ss&quot;</dd> 
+<dd id="msmMtTts">出現:  任意（推奨）</dd> 
+</dl> 
+<h3>2.4.3 Master SMIL &lt;body&gt;</h3> 
+<p>DAISY 2.02 Master SMILの&lt;body&gt;要素は、以下の子を包含しなくてはならない（must）。</p> 
+<dl> 
+<dt id="tnsmMstrBody">ref [1個または数個]</dt> 
+</dl> 
+<h4>2.4.3.1 &lt;ref&gt;要素の属性</h4> 
+<p>&lt;ref&gt;要素に出現する属性は次のとおりである。</p> 
+<dl> 
+<dt>title</dt> 
+<dd>内容: 参照されたSMILドキュメントの最初の&lt;text&gt;要素のテキストコンテンツ - おそらく見出し</dd> 
+<dd id="tnsmTtl">出現:  任意（推奨）</dd> 
+<dt>src</dt> 
+<dd>内容: 参照されたSMILドキュメントの物理名へのテキスト参照（textual reference）</dd> 
+<dd id="tnsmMsrc">出現: 必須（mandatory）</dd> 
+<dt>id</dt> 
+<dd>内容: XML識別子</dd> 
+<dd id="tnsmMid">出現: 必須（mandatory）</dd> 
+</dl> 
+<h3>2.4.4 Master SMILの例</h3> 
+<pre class="example">
+&lt;!DOCTYPE SMIL PUBLIC &quot;-//W3C//DTD SMIL 1.0//EN&quot; &quot;http://www.w3.org/TR/REC-SMIL/SMIL10.dtd&quot;&gt; 
+&lt;smil&gt; 
+  &lt;head&gt; 
+    &lt;meta name=&quot;dc:title&quot; content=&quot;Economics&quot; /&gt; 
+    &lt;meta name=&quot;dc:identifier&quot; content=&quot;DTB00345&quot; /&gt; 
+    &lt;meta name=&quot;dc:format&quot; content=&quot;Daisy 2.02&quot; /&gt; 
+    &lt;meta name=&quot;ncc:generator&quot; content=&quot;LpStudioGen 1.6&quot; /&gt; 
+    &lt;meta name=&quot;ncc:timeInThisSmil&quot; content=&quot;91:27:21&quot; /&gt;
+    &lt;layout&gt;            
+      &lt;region id=&quot;txtView&quot; /&gt;
+    &lt;/layout&gt;
+  &lt;/head&gt; 
+  &lt;body&gt; 
+    &lt;ref title=&quot;Economics by Richard G. Lipsey et.al.&quot; src=&quot;econ0001.smil&quot; id=&quot;lpID_0001&quot; /&gt; 
+    &lt;ref title=&quot;Information about the talking book&quot; src=&quot;econ0002.smil&quot; id=&quot;lpID_0002&quot; /&gt; 
+    &lt;ref title=&quot;Contents in brief&quot; src=&quot;econ0003.smil&quot; id=&quot;lpID_0003&quot; /&gt; 
+    ...
+    &lt;ref title=&quot;Part 1. The nature of economics&quot; src=&quot;econ0009.smil&quot; id=&quot;lpID_0007&quot; /&gt; 
+    &lt;ref title=&quot;1. The economic problem&quot; src=&quot;econ0010.smil&quot; id=&quot;lpID_0008&quot; /&gt; 
+    &lt;ref title=&quot;2. Economics as a social science&quot; src=&quot;econ0011.smil&quot; id=&quot;lpID_0009&quot; /&gt; 
+    &lt;ref title=&quot;3. An overview of the market economy&quot; src=&quot;econ0012.smil&quot; id=&quot;lpID_0010&quot; /&gt; 
+    ...
+    &lt;ref title=&quot;Ending announcement&quot; src=&quot;econ0088.smil&quot; id=&quot;lpID_0095&quot; /&gt; 
+  &lt;/body&gt;
+&lt;/smil&gt; 
+</pre> 
+<div class="notice"><b>注意事項</b> 
+-Master SMILは、将来の相互運用性の理由のために含まれている。一般的なSMILプレイヤーにDTBのコンテンツへのアクセスを与えるためにも使用されるかもしれない。</div> 
+<h2 id="audioformats">2.5 音声ファイルと形式</h2> 
+<h3 id="tnAudFmts">2.5.1 サポートされる音声形式</h3> 
+<h4>2.5.1.1. PCM</h4> 
+<p id="pcmRiff">PCMファイルは、その形式タグとしてPCMを示すヘッダをつけてMicrosoft RIFF WAVEファイル形式を使用しなければならない（must）。PCMファイルは、ファイル拡張子 &quot;.wav&quot;を使用しなければならない（must）。</p> 
+<h4>2.5.1.2. MPEG Audio</h4> 
+<p id="tnAudMp">ISO / MPEGやMicrosoft RIFF WAVEのどちらかで定義されたMPEGファイルは、ヘッダとファイル構造を使用しなければならない（must）。MPEGオーディオの次のサブフォーマットがサポートされている: MPEG-1 Layer 2; MPEG-1 Layer 3; MPEG-2 Layer 2; MPEG-2 Layer 3。ISO / MPEGファイル形式を使用する場合、ファイル拡張子はそれぞれ&quot;.mp2&quot;または&quot;.mp3&quot;であるべきである（should）。</p> 
+<p id="riffExtn">Microsoft RIFF WAVEファイルフォーマットを使用する場合は、ファイル拡張子は&quot;.wav&quot;にするべきである（should）。</p> 
+<p>ISO / MPEGファイル形式とその拡張子を使用することが推奨される（recommended）。</p> 
+<h4>2.5.1.3. ADPCM2</h4> 
+<p>ADPCM2ファイルには、ファイル拡張子の&quot;.wav&quot;にしなければならない（must）。</p> 
+<div id="adpcmNotice" class="notice"><b>注意事項</b> 
+-Sigtuna 2などの製作ツールで DAISY DTBをエンコードするために使用されるADPCM2形式は、特許で保護されたものである。ADPCM2ファイル形式のヘッダは、RIFF WAVEの仕様に完全に準拠していない。そのため、標準的なマルチメディアツールでは、これらのファイルを正しくレンダリングできないだろう。</div> 
+<h3 id="audPrm">2.5.2. サポートされている音声ファイル形式のパラメータリスト</h3> 
+<dl> 
+<dt>PCM</dt> 
+<dd id="tnAudBitDepth">ビット深度: 8-24</dd> 
+<dd>サンプリング周波数: 全て</dd> 
+<dd>チャンネル番号: 1または2（モノラルまたはステレオ）</dd> 
+</dl> 
+<div id="pcmFs" class="notice"><b>注意事項</b> 
+- PCMを使用する場合は、1サンプルあたりのビット数が16bitかつサンプリング周波数は44.1、22.05、または11.025が推奨される（recommended）。一部の音声再生システムがその他の種類を正しくレンダリングできないかもしれないからである。
+</div> 
+<dl> 
+<dt>ADPCM2</dt> 
+<dd id="tnAudadpcm2">ビット深度: 4</dd> 
+<dd>サンプリング周波数: 全て</dd> 
+<dd>チャンネル番号: 1（モノラル）</dd> 
+<dt>MPEG-1/MPEG-2 Layer 2/3</dt> 
+<dd>ビット深度: 全て</dd> 
+<dd>サンプリング周波数: 全て</dd> 
+<dd>チャンネル番号: 1または2（モノラルまたはステレオ）</dd> 
+</dl> 
+<div id="vbrNotice" class="notice"><b>注意事項</b> 
+- 一部のMP3エンコーダは、VBR（Variable Bit Rate encoding: 可変ビットレートエンコーディング）機能を備えている。一部の音声再生システムはVBRを正しくデコードすることができないかもしれないため、DAISY DTBのでの使用は推奨されない（not recommended ）。</div> 
+<h3 id="audioName">2.5.3 音声ファイル名</h3> 
+<p id="tnAuName">音声ファイル名は、文字([A-Za-z])と数値([0-9])、ハイフン(&quot;-&quot;)とアンダースコア (&quot;_&quot;). のみを使用することを強く推奨する（recommended）。</p> 
+<h1 id="distribution">3. DTBの配布について</h1> 
+<h2 id="singlebook">3.1 単一ボリュームのDTB</h2> 
+<p id="tnMednccCnt">NCC.HTMLはSMILとメディア（音声）ファイルとともにキャリアメディアのルートに配置されるべきである（should）。これはデフォルトのケースである。</p> 
+<p>しかし、このケースには以下の任意の例外が存在する。それらの例外は仕様で認められているものの、全ての再生デバイスがそのデフォルトと異なるケースを正しく処理できるとは限らないため、製作者はこれらを注意して使用するべきである（should）。</p> 
+<ol> 
+<li>NCC.HTMLとその関連ファイルは、ディレクトリ構造内に存在してもよい（may）。</li> 
+<li>NCC.HTMLおよびSMILドキュメントは、相対URIを含んでいてもよい（may）。言い換えれば、DAISY  DTBのファイルセットの合計は、１つの統一された場所に配置する必要はない。</li> 
+</ol> 
+<p><em>例えば、メディアのルートに配置されたNCC.HTMLは次のような見出し要素を持ってもよい（may）。</em></p> 
+<pre class="example">
+&lt;h1 id=&quot;econ0128&quot;&gt;&lt;a href=&quot;./subfolder1/econ0065.smil#ec650001&quot;&gt;Chapter 1&lt;/a&gt;&lt;/h1&gt;
+</pre> 
+<p><em>それに対応するSMILセクションは次のようになる。</em></p> 
+<pre class="example">
+	...
+        &lt;par endsync=&quot;last&quot;&gt;
+          &lt;text src=&quot;../ncc.html#econ00128&quot; id=&quot;ec650001&quot; /&gt;
+          &lt;seq&gt;
+            &lt;audio src=&quot;./subfolder2/econ0034.wav&quot; clip-begin=... /&gt;
+            &lt;audio src=&quot;./subfolder3/econ0035.wav&quot; clip-begin=... /&gt;
+	...
+</pre> 
+<p>DAISY 2.02準拠を達成するために、再生デバイスには、デフォルトのケースに準拠したDTBの再生に対応することのみが求められる（required）。</p> 
+<h2 id="multvolubook">3.2 複数のボリュームのDTB</h2> 
+<p>DAISY DTBが、そのサイズのために、いくつかの（2つ以上）のキャリアメディア上に配置しなければならない場合、次の方法が使用されなければならない（must）。</p> 
+<p>各キャリアメディアは、次のように追加された完全なNCCドキュメントを持たなければならない（must）。</p> 
+<ol> 
+<li>NCC.HTMLドキュメントの&lt;head&gt;要素には、セットの中の現在のボリュームを識別する&lt;meta&gt;の子が導入される。3つのメディアに分けて配布されたDTBの最初のメディアのNCC.HTMLには、次の要素が、読まれるだろう。<pre class="example">
+&lt;meta name=&quot;ncc:setInfo&quot; content=&quot;1 of 3&quot; /&gt;
+</pre>content属性の&quot;1 of 3&quot;、 &quot;2 of 3&quot;、 &quot;3 of 3&quot; は、メディアの順序を意味する。</li> 
+</ol> 
+<div class="notice"><b>注意</b> 
+- ncc:setInfo要素は、複数のボリュームDTBのみで求められる（required）。単一ボリュームのDTBは、この要素が存在しないことによって定義されている。</div> 
+<ol start="2"> 
+<li id="tnFirstNavEntry">各キャリアメディアは、最初のナビゲーション可能なエントリとしてその図書のタイトルセクションを持たなければならない（must）。</li> 
+<li>ローカルにない音声データを指し示すNCCドキュメントコピーのそれらのセクションでは、SMILファイルと対応する音声ファイルは「ディスクxを挿入してください」（xはセット内のメディアの番号を表す）というメッセージを含む形で参照される。</li> 
+<li id="tnRelAttr">NCC見出しがローカルにない情報を指し示すアンカー要素が追加された<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">rel属性</a>がなければならない（must）。rel属性の有効な値はメディアの番号を識別する。有効なrel属性は、  &quot;1 of 3&quot;、&quot;2 of 3&quot;、 &quot;3 of 3&quot;などである</li> 
+</ol> 
+<div class="sidebar"> 
+<h3>3.2.1 複数のボリュームDTB: エンドユーザー関係</h3> 
+<p>15の章で構成されるDTBが3つのメディアに分けて収載されている。それぞれのメディアには5つの章が収載されている。現在、第5章を読んでいるエンドユーザは、第6章の先頭を指し示している。「ディスク2を挿入してください」という音声メッセージが再生される。エンドユーザーは、別のメディアを挿入する。</p> 
+<p>挿入されたメディアが正しいものであれば、再生は正しく第6章の最初から継続される。</p> 
+<p>挿入されたメディアには正しいDTBが収載されていたもの、間違った番号のメディアだった場合、「ディスク2を挿入してください」という音声メッセージが再度再生される。</p> 
+<p>挿入されたメディアに他のDTBが収載されていた場合は、新しいDTBのタイトル情報に続いて一般的なエラーメッセージが再生される。</p> 
+<p>エンドユーザは、正しいものが見つかるまで他のメディアを挿入し続ける。一部の再生システムは、第6章の先頭に自動的に移動することができるだろうが、手動で第6章への移動することが求められるかもしれない。</p> 
+<p>前にメディア1を読んだことない状態で、セットのメディア2をエンドユーザーが挿入した場合、タイトル情報が読まれるだろう。その後で、rel属性を持たない最初の要素、つまり、そのDTBの、ローカルで最初の再生可能なセクションから再生が始まる。</p> 
+</div> 
+<h3>3.2.2 複数のボリュームDTB:  NCCとSMILの例</h3> 
+<h4>複数のボリュームのDTBのNCCの例</h4> 
+<p><em>次の例では、3つセットの2番目のディスクを示している。</em></p> 
+<pre class="example">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    ... <i>other head elements</i> 
+...
+    &lt;meta name=&quot;setInfo&quot; content=&quot;2 of 3&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1 id=&quot;ec001&quot; class=&quot;title&quot;&gt; &lt;a href=title.smil#info0001&gt;Title section&lt;/a&gt;&lt;/h1&gt;
+    ...
+    &lt;h1 id=&quot;ec006&quot;&gt;&lt;a href=ch01.smil#ec01 rel=&quot;1 of 3&quot;&gt;Chapter 1&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec007&quot;&gt;&lt;a href=ch02.smil#ec01 rel=&quot;1 of 3&quot;&gt;Chapter 2&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec008&quot;&gt;&lt;a href=ch03.smil#ec01 rel=&quot;1 of 3&quot;&gt;Chapter 3&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec009&quot;&gt;&lt;a href=ch04.smil#ec01 rel=&quot;1 of 3&quot;&gt;Chapter 4&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec010&quot;&gt;&lt;a href=ch05.smil#ec01 rel=&quot;1 of 3&quot;&gt;Chapter 5&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec011&quot;&gt;&lt;a href=ch06.smil#ec01&gt;Chapter 6&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec012&quot;&gt;&lt;a href=ch07.smil#ec01&gt;Chapter 7&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec013&quot;&gt;&lt;a href=ch08.smil#ec01&gt;Chapter 8&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec014&quot;&gt;&lt;a href=ch09.smil#ec01&gt;Chapter 9&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec015&quot;&gt;&lt;a href=ch10.smil#ec01&gt;Chapter 10&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec016&quot;&gt;&lt;a href=ch11.smil#ec01 rel=&quot;3 of 3&quot;&gt;Chapter 11&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec017&quot;&gt;&lt;a href=ch12.smil#ec01 rel=&quot;3 of 3&quot;&gt;Chapter 12&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec018&quot;&gt;&lt;a href=ch13.smil#ec01 rel=&quot;3 of 3&quot;&gt;Chapter 13&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec019&quot;&gt;&lt;a href=ch14.smil#ec01 rel=&quot;3 of 3&quot;&gt;Chapter 14&lt;/a&gt;&lt;/h1&gt;
+    &lt;h1 id=&quot;ec020&quot;&gt;&lt;a href=ch15.smil#ec01 rel=&quot;3 of 3&quot;&gt;Chapter 15&lt;/a&gt;&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre> 
+<h4>複数のボリュームのDTBのSMILの例</h4> 
+<p><em>次の例は、上記のNCCの例にある&quot;ch01.smil&quot;に対応している。</em></p> 
+<pre class="example">
+&lt;!DOCTYPE SMIL PUBLIC &quot;-//W3C//DTD SMIL 1.0//EN&quot; &quot;http://www.w3.org/TR/REC-SMIL/SMIL10.dtd&quot;&gt;
+&lt;smil&gt;
+  &lt;head&gt;
+    <i>...other head elements...</i>
+    &lt;layout&gt;
+      &lt;region id=&quot;txtView&quot; /&gt;
+    &lt;/layout&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;seq dur=&quot;4.024s&quot;&gt;
+      &lt;par endsync=&quot;last&quot;&gt;
+        &lt;text src=&quot;ncc.html#ec001&quot; id=&quot;info0001&quot; /&gt;
+        &lt;audio src=&quot;please_insert_cd_1.wav&quot; clip-begin=&quot;npt=0.000s&quot; clip-end=&quot;npt=1.456s&quot; id=&quot;info0004&quot; /&gt;
+      &lt;/par&gt;
+    &lt;/seq&gt;
+  &lt;/body&gt;
+&lt;/smil&gt;
+</pre> 
+<h2 id="multbookvolu">3.3 複数のDTBのボリューム</h2> 
+<p>同じキャリアメディア上で1つ以上のDAISY DTBが提供される場合、次の方法が使用されなければならない（must）。</p> 
+<p id="tndiskInfo">各DTBは別のフォルダ（ディレクトリ）に格納されなければならない（must）。キャリアメディアのルートには、メディア上の全てのDTBへのリンクを持つdiscinfo.htmlと呼ばれるファイルが作成される。このドキュメントは、<a href="#discinfoexample">セクション3.3.1</a>で示されたように構造化されなければならない（must）。</p> 
+<h3 id="discinfoexample">3.3.1 discinfoドキュメントの例</h3> 
+<pre class="example">
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;CD Information&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-type&quot; content=&#39;text/html; charset=&quot;iso-8859-1&quot;&#39; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;a href=&quot;./book1/ncc.html&quot;&gt;Economics&lt;/a&gt;
+    &lt;a href=&quot;./book2/ncc.html&quot;&gt;Ecology&lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre> 
+<div class="sidebar"> 
+<h3>3.3.2 複数のDTBのボリューム: 一般的な再生システムのふるまい</h3> 
+<p>3つのDAISY DTBを格納した１つのメディアが再生システムに挿入される。エンドユーザーは、GUIおよび/またはAUIを介して複数のDTBが同じメディア上に存在することを知らされる。これに続いて、各DTBのタイトルセクションが&quot;bookshelf order&quot;を意味する番号の後に読み上げられる。エンドユーザーは、DTBの番号を選ぶことで、読むDTBを選択する。</p> 
+</div> 
+<h2 id="cdrom">3.4 配布/ストレージメディアフォーマット</h2> 
+<p>長いファイル名(8.3形式より長い)を可能にするファイルシステムの使用が求められる（required）。</p><p>CD-ROMでは、ISO 9660の拡張である&quot;Joliet&quot; の使用が推奨される（recommended）。&quot;Romeo&quot; ファイルシステムが使用してはならない（shall not）。</p> 
+<div class="notice"><b>注意事項</b> 
+-これらおよび他のCD-ROMフォーマットの詳細については、<a href="http://www.ping.be/~pin11466/formtxt.html">www.ping.be</a>を参照すること。</div> 
+<h1 id="changes">付録1. 変更履歴</h1> 
+<h2 id="chng2021">A1.1 1998年9月22日付DAISY 2.0 と1999年9月22日付DAISY 2.01の間の変更点</h2> 
+<ul> 
+<li>プレーヤーがサポートしている場合、エンドユーザはページ番号の読み上げをオンまたはオフにしてもよい（may）。ページ番号がNCCにある場合、直接ナビゲーションがすでにサポートされている。</li> 
+<li>ノートの参照、サイドバー、そして、任意の製作者ノートのユーザーコントロール。プレーヤーがサポートしている場合、これらのアイテムはエンドユーザによってオンまたはオフにしてもよい（may）。必須ではない製作者ノート、フローティングサイドバーと供に、footnote、annotation、 endnote、rear noteをエンドユーザによってオンまたはオフにすることができる。以前オフにしたかもしれないこれらのアイテムに、エンドユーザーがナビゲートするのを容易にするため、これらのアイテムをNCCに配置してもよい（may）。</li> 
+<li>リソースリスト - これによって、構造要素のclass属性をプレーヤーが利用することができる。NCC内のアイテムの記述を適合させるために、プレイヤーのアナウスメントでこれらのリソースを使用してもよい（may）。</li> 
+</ul> 
+<h2 id="chng2122">A1.2 1999年9月21日付 DAISY 2.01と2001年2月28日付DAISY 2.02の間の変更点</h2> 
+<ul> 
+<li>HTML4の使用が正式に非推奨になった</li> 
+<li>NCC.HTMLメタデータセットの改訂と明確化</li> 
+<li>認められるncc &lt;body&gt;の子を&lt;h1&gt;から&lt;h6&gt;、&lt;span&gt;と&lt;div&gt;に制限</li> 
+<li>SMILメタデータセットの定義</li> 
+<li>SMIL &lt;head&gt;と&lt;body&gt;の定義</li> 
+<li>Master SMILの定義</li> 
+<li>サポートされる音声形式の定義</li> 
+<li>2.0から2.01への拡張で追加された機能が任意（optional）であることの宣言</li> 
+<li>任意のコンテンツ（脚注、サイドバーなど）のためのNCCとSMIL構文の変更</li> 
+<li>（複数のテキストコンテンツドキュメントを使用する場合に）&lt;head&gt; &lt;link&gt;要素の使用が任意（optional）であることの宣言</li> 
+</ul> 
+<h1 id="metatabs">付録2. DAISY 2.02ドキュメントのメタデータセット表</h1> 
+<h2 id="nccMetaTab">A2.1 NCC.HTMLメタデータセット表</h2> 
+<table> 
+<tr> 
+<td><b>接頭辞</b></td> 
+<td><b>ラベル</b></td> 
+<td><b>スキーム</b></td> 
+<td><b>出現</b></td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>charset</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>contributor</td> 
+<td>-</td> 
+<td>任意*</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>coverage</td> 
+<td>-</td> 
+<td>任意*</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>creator</td> 
+<td>-</td> 
+<td>必須（mandatory）（作成者が知られている場合）*</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>date</td> 
+<td>ISO 8601</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>depth</td> 
+<td>-</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>description</td> 
+<td>-</td> 
+<td>任意*</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>files</td> 
+<td>-</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>footnotes</td> 
+<td>-</td> 
+<td>脚注が使用されている場合は必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>format</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>generator</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>-</td> 
+<td>http-equiv</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>identifier</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>kByteSize</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>language</td> 
+<td>ISO 639-1/ISO 3166</td> 
+<td>必須（mandatory）*</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>maxPageNormal</td> 
+<td>-</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>multimediaType</td> 
+<td>-</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>narrator</td> 
+<td>-</td> 
+<td>任意（推奨）*</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>pageFront</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>pageNormal</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>pageSpecial</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>prodNotes</td> 
+<td>-</td> 
+<td>製作者のノートが使用されている場合は必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>producedDate</td> 
+<td>ISO 8601</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>producer</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>publisher</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>relation</td> 
+<td>-</td> 
+<td>任意*</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>revision</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>revisionDate</td> 
+<td>ISO 8601</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>rights</td> 
+<td>-</td> 
+<td>任意*</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>setInfo</td> 
+<td>k of n</td> 
+<td>複数のボリュームDTBなら必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>sidebars</td> 
+<td>-</td> 
+<td>サイドバーが使用されている場合は必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>source</td> 
+<td>ISBN</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>sourceDate</td> 
+<td>ISO 8601</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>sourceEdition</td> 
+<td>-</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>sourcePublisher</td> 
+<td>-</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>sourceRights</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>sourceTitle</td> 
+<td>-</td> 
+<td>任意（タイトルが異なる場合は必須（mandatory））</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>subject</td> 
+<td>-</td> 
+<td>任意（推奨）*</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>title</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>tocItems</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>totalTime</td> 
+<td>hh:mm:ss</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>タイプ
+</td> 
+<td>-</td> 
+<td>任意*</td> 
+</tr> 
+</table> 
+<p>* =このmeta要素は、NCC meta要素のセット内で複数回発生する可能性があります。</p> 
+<h2 id="smilMetaTab">A2.2 SMILメタデータセット表</h2> 
+<table> 
+<tr> 
+<td><b>接頭辞</b> 
+</td> 
+<td><b>ラベル</b> 
+</td> 
+<td><b>スキーム</b> 
+</td> 
+<td><b>発生</b> 
+</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>format</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>generator</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>identifier</td> 
+<td>-</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>timeInThisSmil</td> 
+<td>SMILクロック</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>-</td> 
+<td>title</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>title</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>totalElapsedTime</td> 
+<td>SMILクロック</td> 
+<td>任意（推奨）</td> 
+</tr> 
+</table> 
+<h2 id="mSmilMetaTab">A2.3 Master SMILのメタデータセット表</h2> 
+<table> 
+<tr> 
+<td>dc</td> 
+<td>format</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>generator</td> 
+<td>-</td> 
+<td>任意</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>identifier</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+<tr> 
+<td>ncc</td> 
+<td>timeInThisSmil</td> 
+<td>SMILクロック</td> 
+<td>任意（推奨）</td> 
+</tr> 
+<tr> 
+<td>dc</td> 
+<td>title</td> 
+<td>-</td> 
+<td>必須（mandatory）</td> 
+</tr> 
+</table> 
+<h1 id="interoperability">付録3. 相互運用性と DAISY 証明</h1> 
+<p>XHTMLとSMILファイルは全て。標準的なXML検証ツールを使用して検証することができる。NCC及びXHTMLにある書籍のコンテンツは、XHTML 1.0 transitional仕様に対して検証することはできる。SMILファイルは、SMIL 1.0仕様に対するXMLパーサーで検証することができる。</p> 
+<p>検証ツールによるこれらの標準的なテストに加えて、いくつかのテスト用の書籍が利用可能となるだろう。DAISY 2.02仕様を満たしたいプレーヤーのメーカーは、内部テストをするためにこれらの仕様とテスト用書籍を使用するべきである（should）。このテストスイートで提供された書籍の全てがプレイヤーで再生することができたなら、プレイヤーのメーカーは、そのプレイヤーがDAISY 2.02準拠であることの証明を求めてもよい（may）。</p> 
+<p>オーサリングツールのメーカーは、オーサリングツールでこれらの仕様を満たすことができなければならない（must）。オーサリングツールがこれらの仕様を満たし、テストスイート資料のように実行したコンテンツを作成した場合、開発者は、オーサリングツールがDAISY 2.02準拠であることの証明を要求してもよい（may）。</p> 
+<p>DAISYコンソーシアムの証明を受けるためには、プレーヤーやオーサリングツールを、パフォーマンステストのためにDAISYコンソーシアムに提出しなければならない（must）。<br /> 
+<br /> 
+<br /> 
+</p> 
+</body> 
+</html>

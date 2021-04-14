@@ -1,0 +1,34 @@
+
+.translation-attention {
+margin:2em 0;
+padding:0.5em 1.5em;
+border:1px solid #b35454;
+color:#800;
+background-color:#fce9e9;
+font-size:80%; }
+
+.translation-attention dl {
+line-height:1.5;}
+
+.translation-attention dt {
+width:4em;
+float:left;
+clear:left;
+margin-top:0;
+font-weight:normal;}
+
+.translation-attention dd {
+display:block;}
+
+
+.translation-note {
+margin:1em 0;
+padding:0.5em 1.5em;
+border:1px solid #b35454;
+color:#800;
+background-color:#fce9e9;
+font-size:80%; }
+
+span.translation-note {
+margin:0;
+padding:0.2em; }
