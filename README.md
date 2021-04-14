@@ -9,4 +9,5 @@ translation collection of EPUB / DAISY specifications
 
 ## DAISY
 * [DAISY 2.02 Specification](https://japan-daisy-consortium.github.io/translations/daisy/202/20010228/daisy_202.html)
-* [ANSI/NISO Z39.86-2005 (R2012), Specifications for the Digital Talking Book (Approved April 21, 2005) (DAISY 3)](https://japan-daisy-consortium.github.io/translations/daisy/z3986/2005/Z3986-2005.html)
+* [ANSI/NISO Z39.86-2005 (R2012), Specifications for the Digital Talking Book(DAISY 3)](https://japan-daisy-consortium.github.io/translations/daisy/z3986/2005/Z3986-2005.html)
+* [Specification for the DAISY Online Delivery Protocol v1](https://japan-daisy-consortium.github.io/translations/daisy/dodp/20100402/specification-for-the-daisy-online-delivery-protocol-v1.html)
