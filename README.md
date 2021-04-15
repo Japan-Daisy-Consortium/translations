@@ -2,7 +2,11 @@
 translation collection of EPUB / DAISY specifications
 
 ## EPUB
+
+### EPUB 3.3
 * [EPUB 3 Overview](https://japan-daisy-consortium.github.io/translations/epub-specs/epub33/overview/)
+
+### References
 * [EPUB Accessibility 1.1](https://japan-daisy-consortium.github.io/translations/epub-specs/epub33/a11y/)
 * [EPUB Accessibility Techniques 1.1](https://japan-daisy-consortium.github.io/translations/epub-specs/epub33/a11y-tech/)
 * [Guidelines for Navigable Audio Only EPUB 3 Publications version 1.0](https://japan-daisy-consortium.github.io/translations/epub-specs/epub33/guidelines/Navigable_audio-only_EPUB3_Gudelines.html)
