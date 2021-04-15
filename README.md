@@ -1,5 +1,4 @@
-# translations
-A collections of translation in EPUB/DAISY specifications.
+# A collections of translation in EPUB/DAISY specifications.
 
 ## EPUB
 
