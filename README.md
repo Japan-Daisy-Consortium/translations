@@ -1,4 +1,4 @@
-# Japanese Translations of EPUB/DAISY specifications.
+# Japanese Translations of EPUB/DAISY specifications
 
 ## EPUB
 
